@@ -1,0 +1,129 @@
+URxvt.saveLines: 2000
+
+! also set with lxappearance and double check the following:
+! /usr/share/icons/default/index.theme
+! ~/.icons/default/index.theme
+! ~/.config/gtk-3.0/settings.ini
+! ~/.gtkrc-2.0
+
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+
+URxvt.font: xft:Hack Nerd Font:pixelsize=16:antialias=true
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt*scrollBar: false
+
+!! clickable urls
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt*saveLines: 12000
+
+! special
+*.foreground:   #ffffff
+*.background:   #080c0b
+*.cursorColor:  #ffffff
+
+!! black
+*.color0:       #0f1414
+*.color8:       #81ca79
+
+!! red
+*.color1:       #6c7573
+*.color9:       #e6a9b0
+
+!! green
+*.color2:       #7f8584
+*.color10:      #88bfff
+
+!! yellow
+*.color3:       #ffa10a
+*.color11:      #8bbcb9
+
+!! blue
+*.color4:       #0274f5
+*.color12:      #ffc23b
+
+!! magenta
+*.color5:       #738d8b
+*.color13:      #82cd79
+
+!! cyan
+*.color6:       #97b9b6
+*.color14:      #cfb061
+
+!! white
+*.color7:       #5154e0 
+!! Grennify  #21AC30
+*.color15:      #0274f5
+
+
+!! Real transparency
+!! URxvt*depth: 32
+!! URxvt.background: [80]#000000
+!! URxvt*background: rgba:0000/0000/0200/c800
+!! *transparent: true
+!! URxvt*.inheritPixmap: true
+
+!! Fake transparency
+URxvt*.transparent: true
+URxvt*.shading: 20
+
+
+*background: #011432
+*foreground: #ccffd6
+
+! --- standard colors ---
+
+! black
+*color0: #000000
+
+! bright_black
+*color8: #808080
+
+! red
+*color1: #b03338
+
+! bright_red
+*color9: #ca494d
+
+! green
+*color2: #38b033
+
+! bright_green
+*color10: #4dca40
+
+! yellow
+*color3: #b0ac33
+
+! bright_yellow
+*color11: #cac549
+
+! blue
+*color4: #0274f5
+
+! bright_blue
+*color12: #0274f5
+
+! magenta
+*color5: #ac33b0
+
+! bright_magenta
+*color13: #c549ca
+
+! cyan
+*color6: #33b0ac
+
+! bright_cyan
+*color14: #49cac5
+
+! white
+*color7: #cdcdcd
+
+! bright_white
+*color15: #fbfbfb
+

@@ -1,0 +1,278 @@
+# Sway - v2020-06-25
+# Ported from i3-gaps
+#
+# * Uses Wofi as menu launcher
+# * swaylock-fancy for screen locking
+# * alacritty as default term
+# * grim (with slurp) for screenshots
+#  
+# Maintainer:
+#   Yves Hoppe <info@yveshoppe.de>
+
+# Sway specific stuff
+# KeyBoard layout
+input * xkb_layout de
+# input "MANUFACTURER1 Keyboard" xkb_model "pc105"
+
+# output HDMI-A-1 pos 0 0 res 5120x1440@69.973000Hz
+# output DP-2 transform 90 pos 5120 0 mode 2560x1440@143.912003Hz 
+output DP-1 pos 0 0 res 2560x1440@143.972000Hz
+output DP-2 pos 2560 0 res 2560x1440@143.972000Hz
+output DP-3 transform 90 pos 5120 0 mode 2560x1440@59.951000Hz
+
+# focus output DP-1
+
+output "*" background /mnt/ultrafast/nextcloud/home/wallpaper/2020/purple-space-abstract.jpg fill
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 0 
+
+# we use comptone highlighting instead
+default_border none
+
+# class                 border  backgr. text    indicator
+# client.focused          #ff8c1a #ff8c1a #ffffff #ff8c1a
+# client.unfocused        #663300 #663300 #888888 #663300
+# client.focused_inactive  #663300 #663300 #888888 #663300
+
+hide_edge_borders both
+
+# Gaps
+gaps inner 2
+gaps outer 0 
+
+# No gaps on workspace 3
+# workspace 3 gaps inner 0
+
+
+smart_gaps on
+
+# Workspace names (With fontawesome)
+# Dashboard
+set $ws0 "0:0 "
+set $ws1 "1:  "
+# Web
+set $ws2 "2:  "
+# Dev
+set $ws3 "3:  "
+# SQL
+set $ws4 "4: "
+# Mail
+set $ws5 "5: "
+# vmware
+set $ws6 "6:  "
+# spotify
+set $ws7 "7:  "
+# vlc
+set $ws8 "8:  "
+# Trash
+set $ws9 "9:  "
+
+# Some extra space
+set $cws1 "s1: "
+set $cws2 "s2: "
+set $cws3 "s3: "
+
+# rename workspace 1 to $ws1
+# rename workspace 2 to $ws2
+# rename workspace 3 to $ws3
+# rename workspace 4 to $ws4
+# rename workspace 5 to $ws5
+# rename workspace 6 to $ws6
+# rename workspace 7 to $ws7
+# rename workspace 8 to $ws8
+# rename workspace 9 to $ws9
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec alacritty # rxvt-unicode / urxvt
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start wofi (a program launcher like rofi for starting programs)
+bindsym $mod+d exec wofi --show drun
+# bindsym $mod+s exec rofi -show ssh -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+# bindsym $mod+a exec rofi -show window -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85 
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+# bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+# bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+# bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+bindsym $mod+Ctrl+1 workspace $cws1
+bindsym $mod+Ctrl+2 workspace $cws2
+bindsym $mod+Ctrl+3 workspace $cws3
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
+bindsym $mod+Shift+Ctrl+1 move container to workspace  $cws1
+bindsym $mod+Shift+Ctrl+2 move container to workspace  $cws2
+bindsym $mod+Shift+Ctrl+3 move container to workspace  $cws3
+
+bindsym $mod+Shift+c reload
+
+# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
+bindsym $mod+Shift+r restart
+
+# Exit sway (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Create screenshot with Grim
+bindsym Print exec grim /mnt/ultrafast/nextcloud/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+
+# Save screenshot with Sway and selection tool
+bindsym $mod+Print exec grim -g "$(slurp)" /mnt/ultrafast/nextcloud/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+
+# Lock the system
+bindsym $mod+l exec swaylock-fancy
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    # Bumblee status dev
+    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic traffic xrandr cpu sensors memory pasink pasource weather date time battery -p interval=8 github.token=REPLACE_WITH_YOUR_TOKEN time.format="%H:%M" date.format="%a, %b %d %Y" home.path=/ disk.left-click="dolphin {instance}" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0,vboxnet,veth,wlp,wwp,br,macvtap0,vibr0,vibr,vnet0,virbr0,virbr1 nic.exclude=lo,docker,vmnet,lxcbr,wwp0s,vboxnet,veth,br,vnet,br-72a8a860a1ae,vibr0-nic,vibr,vnet0,virbr0,virbr1 -t gruvbox-powerline
+    
+    # tray_output primary
+    font pango:DejaVu Sans Mono for Powerline 12 
+    strip_workspace_numbers yes
+
+    # Overwritten by theme, fallback
+	colors {
+        background #000000
+        statusline #9b9081
+        separator #cccccc
+ 
+        # Colors           border  backgr. text
+        focused_workspace  #141414 #CCCCCC #333333
+        active_workspace   #141414 #181b20 #746C48
+        inactive_workspace #141414 #181b20 #444444
+        urgent_workspace   #141414 #181b20 #8c644c
+    }
+
+   # Using polybar at the top
+   #  position top
+}
+
+# Positioning monitors
+# exec --no-startup-id bash ~/rotate_24.sh
+
+# Gnome settings daemon (or unit if Ubuntu)
+exec --no-startup-id copyq
+
+# Notifications
+exec --no-startup-id dunst -config ~/.config/i3/config_dunst
+
+# uxrvt in daemon mode
+# exec --no-startup-id uxrvtd -q -f -o
+
+# Dropbox
+# exec --no-startup-id /usr/bin/dropbox start
+
+# Gnome
+# exec --no-startup-id gnome-keyring-daemon --start
+
+# Network Manager
+# exec --no-startup-id nm-applet --no-agent
+
+# exec --no-startup-id conky
+# exec --no-startup-id albert
+
+# exec --no-startup-id xss-lock "swaylock-fancy"
+
+# Make sure pulseadio is started
+exec --no-startup-id pulseaudio --start
+
+exec --no-startup-id wmname LG3D
+
+exec --no-startup-id  swayidle timeout 600 'swaymsg "output * dpms off"' \
+       resume 'swaymsg "output * dpms on"' \
+       before-sleep 'swaylock -c 000000'
+

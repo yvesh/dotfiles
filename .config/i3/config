@@ -1,0 +1,274 @@
+# i3-gaps config - v2019-09-22
+# 
+# Maintainer:
+#   Yves Hoppe <info@yveshoppe.de>
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 0 
+
+# we use comptone highlighting instead
+new_window pixel 0 
+
+# class                 border  backgr. text    indicator
+client.focused          #ff8c1a #ff8c1a #ffffff #ff8c1a
+client.unfocused        #663300 #663300 #888888 #663300
+client.focused_inactive  #663300 #663300 #888888 #663300
+
+hide_edge_borders both
+
+# Gaps
+gaps inner 8
+gaps outer 0 
+border_radius 5
+border radius 5
+
+# No gaps on workspace 3
+# workspace 3 gaps inner 0
+
+# 
+smart_gaps on
+
+# Workspace names
+# Dashboard
+set $ws1 "1:  "
+# Web
+set $ws2 "2:  "
+# Dev
+set $ws3 "3:  "
+# SQL
+set $ws4 "4:  "
+# Mail
+set $ws5 "5:  "
+# vmware
+set $ws6 "6: "
+# spotify
+set $ws7 "7:  "
+# vlc
+set $ws8 "8:  "
+# Trash
+set $ws9 "9:  "
+
+rename workspace 1 to $ws1
+rename workspace 2 to $ws2
+rename workspace 3 to $ws3
+rename workspace 4 to $ws4
+rename workspace 5 to $ws5
+rename workspace 6 to $ws6
+rename workspace 7 to $ws7
+rename workspace 8 to $ws8
+rename workspace 9 to $ws9
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec alacritty # urxvt # alacritty # rxvt-unicode
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# Start rofi (a program launcher)
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+s exec rofi -show ssh -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+
+# Change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+# bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+# bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace 0
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace 0
+
+assign [class="Chrome"] 2 www
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Create screenshot with Maim
+bindsym Print exec maim /mnt/fast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+
+# Save screenshot with Maim and selection tool
+bindsym $mod+Print exec maim -s /mnt/fast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+
+# Lock the system
+bindsym $mod+l exec i3lock-fancy-rapid 5 3
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    # Bumblee status dev
+    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic traffic cpu sensors memory pasink pasource date time battery -p time.format="%H:%M" date.format="%a, %b %d %Y" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0,vboxnet,veth,wlp,wwp,br,macvtap0,vibr0,vibr,vnet0,virbr0,virbr1 nic.exclude=lo,docker,vmnet,lxcbr,wwp0s,vboxnet,veth,br,vnet,br-72a8a860a1ae,vibr0-nic,vibr,vnet0,virbr0,virbr1 -t gruvbox-powerline
+    
+    # tray_output primary
+    font pango:DejaVu Sans Mono for Powerline 12 
+    strip_workspace_numbers yes
+
+    # Overwritten by theme, fallback
+	colors {
+        background #000000
+        statusline #9b9081
+        separator #ccc
+ 
+        # Colors           border  backgr. text
+        focused_workspace  #141414 #CCCCCC #333333
+        active_workspace   #141414 #181b20 #746C48
+        inactive_workspace #141414 #181b20 #444444
+        urgent_workspace   #141414 #181b20 #8c644c
+    }
+
+   # Using polybar at the top
+   #  position top
+}
+
+# Positioning monitors
+# exec --no-startup-id bash ~/rotate_24.sh
+exec --no-startup-id bash ~/./screenlayout/default.sh
+
+# Compton
+# exec --no-startup-id compton -b --backend glx 
+
+# exec --no-startup-id xrandr --output eDP1 --mode 1920x1080
+
+# XKB
+exec --no-startup-id setxkbmap de
+
+# No XDMS for dock (Don't turn off screens)
+# exec xset -dpms
+
+# Gnome settings daemon (or unity if Ubuntu)
+# exec --no-startup-id /usr/bin/unity-settings-daemon
+# exec --no-startup-id /usr/libexec/gnome-settings-daemon
+# exec --no-startup-id gnome-shell
+
+# clipit
+exec --no-startup-id copyq
+
+# Notifications
+exec --no-startup-id dunst -config ~/.config/i3/config_dunst
+
+# uxrvt in daemon mode
+# exec --no-startup-id uxrvtd -q -f -o
+
+# Dropbox
+# exec --no-startup-id /usr/bin/dropbox start
+
+# Gnome Keyring
+# exec --no-startup-id gnome-keyring-daemon --start
+
+# Network Manager
+exec --no-startup-id nm-applet --no-agent
+
+# Discord
+# exec --no-startup-id discord-canary
+
+# Skype
+# exec --no-startup-id skype
+
+# Scaling for none dock-mode
+# exec --no-startup-id xrandr --dpi 96
+
+# exec --no-startup-id conky
+# exec --no-startup-id albert
+
+exec --no-startup-id xss-lock i3lock-fancy-rapid 3 5
+
+# Make sure pulseaudio is started
+exec --no-startup-id pulseaudio --start
+
+exec --no-startup-id ~/.screenlayout/default.sh
+
+# Set background
+exec --no-startup-id feh --bg-fill /mnt/ultrafast/nextcloud/home/2019-5120/winter.jpg
+

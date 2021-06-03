@@ -1,0 +1,95 @@
+#! /bin/sh
+
+# BSPWM Config - v2020-09-26
+# 
+# Maintainer:
+#   Yves Hoppe <info@yveshoppe.de>
+#
+
+### DISPLAYS
+
+# xrandr --output eDP-1-1 --mode 1920x1080 --rate 144.01
+# xrandr --output eDP-1-1 --mode off
+# xrandr --output DP-2 --mode 5120x1440 --rate 119.97
+# xrandr --output DP-0 --auto --orientation portrait --right-of DP-2
+bash ~/.screenlayout/default.sh
+
+### AUTOSTART
+killall "sxhkd"
+sxhkd &
+picom &
+killall "polybar"
+polybar bytee &
+polybar bytee2 &
+
+# Background with nitrogen / feh
+~/.fehbg &
+# feh --bg-fill /mnt/ultrafast/nextcloud/home/wallpaper/2020/forest-hut-purple.png
+# variety &
+
+# nm-applet & 
+numlockx on & 
+# killall "dunst"
+# dunst -config ~/.config/i3/config_dunst &
+
+copyq &
+xss-lock i3lock-fancy-rapid 3 5 & 
+wmname LG3D &
+
+### Workspace
+bspc monitor DP-0 -d t1 dev1 dev2 vm1 sp1
+bspc monitor HDMI-0 -d web web2 dev3 dev4 vm2 sp2
+
+### Config
+bspc config border_width         2
+bspc config window_gap           3
+bspc config top_padding          0
+bspc config -m HDMI-0 top_padding 27
+bspc config -m DP-0 top_padding 27
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+### Coloring
+bspc config normal_border_color "#000000"
+bspc config focused_border_color "#87AFAF"
+bspc config presel_feedback_color "#4C4C4C"
+
+### Rules
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a mplayer2 state=floating
+
+# Partly floating if they have class (urxvt -name or xterm -class)
+bspc rule -a my_float state=floating
+bspc rule -a *:my_float state=floating
+
+# Floating apps
+bspc rule -a feh state=floating
+bspc rule -a Nitrogen state=floating
+bspc rule -a Arandr state=floating
+
+# Switch away from emptied desktop
+
+move_to_previous_desktop(){
+  bspc desktop -f last.occupied
+}
+
+delete_local_receptacles(){
+  for win in $(bspc query -N -n .leaf.local.!window); do
+    bspc node $win -k
+      done
+}
+
+void_empty_desktop(){
+  if [ -z "$(bspc query -N -n .local.focused)" ]; then
+    delete_local_receptacles
+    move_to_previous_desktop
+  fi
+}
+
+bspc subscribe node_remove | \
+       while read -r _; do
+       void_empty_desktop
+       done
+
