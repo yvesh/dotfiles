@@ -45,7 +45,7 @@ alias ls='ls --color'
 alias ssh='TERM=xterm-256color \ssh'
 alias cdwww='cd ~/srv'
 alias em="emacsclient -nw"
-alias vim="em"
+# alias vim="em"
 alias emacs="emacsclient -c -a 'emacs'"
 alias grep='grep --color=auto'
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
