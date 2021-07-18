@@ -16,6 +16,7 @@ Personal Linux / Unix dot files. Recently have started cleaning them up and usin
 | **Browser:** | firefox, chromium, vivalidi |
 
 ------
+
 ### Distributions
 
 * nixOS -- 2021 main, see [nixos-config](https://github.com/yvesh/nixos-config)

@@ -24,7 +24,7 @@ polybar bytee2 &
 
 # Background with nitrogen / feh
 ~/.fehbg &
-# feh --bg-fill /mnt/ultrafast/nextcloud/home/wallpaper/2020/forest-hut-purple.png
+# feh --bg-fill /path/to/image
 # variety &
 
 # nm-applet & 

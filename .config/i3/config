@@ -270,5 +270,4 @@ exec --no-startup-id pulseaudio --start
 exec --no-startup-id ~/.screenlayout/default.sh
 
 # Set background
-exec --no-startup-id feh --bg-fill /mnt/ultrafast/nextcloud/home/2019-5120/winter.jpg
-
+exec --no-startup-id ~/.fehbg

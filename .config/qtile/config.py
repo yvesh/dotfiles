@@ -53,6 +53,15 @@ keys = [
 
     Key([mod, "shift"], "h", lazy.layout.grow()),
     Key([mod, "shift"], "l", lazy.layout.shrink()),
+
+    # Complex shrinks (for some layouts, like column)
+    Key([mod, "control"], "j", lazy.layout.grow_down()),
+    Key([mod, "control"], "k", lazy.layout.grow_up()),
+    Key([mod, "control"], "h", lazy.layout.grow_left()),
+    Key([mod, "control"], "l", lazy.layout.grow_right()),
+    Key([mod], "n", lazy.layout.normalize()),
+
+    # Flip layout (depending on layout)
     Key([mod], "period", lazy.layout.flip()),
 
     # Switch window focus to other pane(s) of stack
@@ -79,8 +88,8 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
 
     # Screenshot
-    Key([], "Print", lazy.spawn("maim /mnt/fast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg"), desc="Screenshot"),
-    Key([mod], "Print", lazy.spawn("maim -s /mnt/fast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg"), desc="Select area to screenshot"),
+    Key([], "Print", lazy.spawn("maim /mnt/fast/onedrive/screenshots/$(date \+\%Y-\%m-\%d_\%H-\%m-\%s).jpg"), desc="Screenshot"),
+    Key([mod], "Print", lazy.spawn("maim -s /mnt/fast/onedrive/screenshots/$(date \+%Y-\%m-\%d_\%H-\%m-\%s).jpg"), desc="Select area to screenshot"),
 
     # Audio Keys
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
@@ -138,12 +147,12 @@ for i, group in enumerate(groups):
 
 layouts = [
     layout.Max(),
-    layout.Stack(num_stacks=2, margin=8),
-    layout.MonadTall(border_width=2, margin=8),
+    layout.Stack(num_stacks=3, margin=6),
+    layout.MonadTall(border_width=2, margin=6),
     layout.TreeTab(),
+    layout.Columns(margin=4, num_columns=3),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
-    # layout.Columns(),
     # layout.Matrix(),
     # layout.MonadWide(),
     # layout.RatioTile(),
@@ -176,13 +185,13 @@ screens = [
                 ),
                 widget.Sep(linewidth=0, padding=60),
                 widget.Net(
-                       interface = "enp3s0",
+                       interface = "enp36s0f0",
                        format = '{down} ↓↑ {up}',
                        padding = 5
                 ),
                 widget.Systray(),
                 widget.Sep(linewidth=0, padding=15),
-                widget.ThermalSensor(),
+                # widget.ThermalSensor(),
                 widget.Sep(linewidth=0, padding=15),
                 widget.Memory(),
                 widget.Sep(linewidth=0, padding=15),
