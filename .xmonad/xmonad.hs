@@ -96,12 +96,12 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myStartupHook :: X ()
 myStartupHook = do
 -- Starting picom, gnome-keyring etc. through nixos configuration
---   spawnOnce "picom &"
---   spawnOnce "emacs --daemon &"
+    spawnOnce "picom &"
+    spawnOnce "emacs --daemon &"
 --   spawnOnce "polybar bytee &" -- Using xmobar instead
 --   spawnOnce "polybar bytee2 &"
     spawnOnce "~/.fehbg &" -- last background
---    spawnOnce "copyq &" -- Clipboard manager
+    spawnOnce "copyq &" -- Clipboard manager
     spawnOnce "numlockx on &" -- Clipboard manager
     spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &" -- simple tray
     spawnOnce "xss-lock i3lock-fancy-rapid 3 5 &"
@@ -227,7 +227,7 @@ myKeys =
     , ("M-<Return>", spawn (myTerminal))
     , ("M-d", spawn "rofi -show drun" )
     , ("M-g", spawn (myBrowser ++ "google.com"))
-    
+
     , ("M-q", kill1)
 
     , ("M-S-f", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
