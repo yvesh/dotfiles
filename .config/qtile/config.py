@@ -1,8 +1,10 @@
 # Simple qTile config
-# v0.3.2 (2021-05-17)
+# v0.3.3 (2021-07-30)
 
 import os
 import subprocess
+
+from datetime import datetime
 
 from typing import List  # noqa: F401
 
@@ -16,6 +18,7 @@ terminal = "alacritty"
 reconfigure_screens = True
 auto_fullscreen = True
 focus_on_window_activation = "smart"
+scripts_path = '/home/bytee/.config/qtile'
 
 @hook.subscribe.startup_once
 def start_once():
@@ -86,10 +89,11 @@ keys = [
     # Restart / Logout
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
+    Key([mod], "l", lazy.spawn("i3lock-fancy-rapid 5 3"), desc="Lock screen"),
 
     # Screenshot
-    Key([], "Print", lazy.spawn("maim /mnt/fast/onedrive/screenshots/$(date \+\%Y-\%m-\%d_\%H-\%m-\%s).jpg"), desc="Screenshot"),
-    Key([mod], "Print", lazy.spawn("maim -s /mnt/fast/onedrive/screenshots/$(date \+%Y-\%m-\%d_\%H-\%m-\%s).jpg"), desc="Select area to screenshot"),
+    Key([], "Print", lazy.spawn(f"'{scripts_path}/screenshot'"), desc="Screenshot"),
+    Key([mod], "Print", lazy.spawn(f"'{scripts_path}/area'"), desc="Select area for Screenshot"),
 
     # Audio Keys
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
