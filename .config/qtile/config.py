@@ -4,8 +4,6 @@
 import os
 import subprocess
 
-from datetime import datetime
-
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget, hook
@@ -250,6 +248,8 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'maketag'},  # gitk
     {'wname': 'branchdialog'},  # gitk
     {'wname': 'pinentry'},  # GPG key password entry
+    {'wname': 'print'},  # Print dialog
+    {'wname': 'Print'},  # System Print DIalog
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
 ])
 
