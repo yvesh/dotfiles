@@ -205,17 +205,17 @@ screens = [
             24,
         ),
     ),
-    Screen(
-        top=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.WindowName(),
-                widget.Clock(format='%a, %d-%m %H:%M'),
-            ],
-            24,
-        ),
-    ),
+#    Screen(
+#        top=bar.Bar(
+#            [
+#                widget.CurrentLayout(),
+#                widget.GroupBox(),
+#                widget.WindowName(),
+#                widget.Clock(format='%a, %d-%m %H:%M'),
+#            ],
+#            24,
+#        ),
+#    ),
 ]
 
 # Drag floating layouts.
@@ -252,6 +252,10 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'Print'},  # System Print Dialog
     {'wname': 'Confirm Exit'},  # Exit DIalog
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
+    {'role': 'about'}, # Default role
+    {'wm_type': 'dialog'}, # Default role
+    {'wm_type': 'notification'}, # Default role
+    {'wm_type': 'splash'}, # Default role
 ])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
@@ -263,3 +267,4 @@ floating_layout = layout.Floating(float_rules=[
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
