@@ -81,10 +81,13 @@ myTerminal :: String
 myTerminal = "alacritty"
 
 myBrowser :: String
-myBrowser = "firefox"
+myBrowser = "vivaldi"
 
 myEditor :: String
 myEditor = "vim"
+
+myLock :: String
+myLock = "i3lock-fancy-rapid 5 3"
 
 myBorderWidth :: Dimension
 myBorderWidth = 2
@@ -109,12 +112,21 @@ myStartupHook = do
 
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
+                , NS "firefox" spawnFirefox findFirefox manageFirefox
                 ]
   where
     spawnTerm  = myTerminal ++ " -t scratchpad"
     findTerm   = title =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
                where
+                 h = 0.9
+                 w = 0.9
+                 t = 0.95 -h
+                 l = 0.95 -w
+    spawnFirefox = "firefox"
+    findFirefox = className =? "Firefox"
+    manageFirefox = customFloating $ W.RationalRect l t w h
+                where
                  h = 0.9
                  w = 0.9
                  t = 0.95 -h
@@ -158,7 +170,7 @@ tall     = renamed [Replace "tall"]
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
-           $ mySpacing 6
+           $ mySpacing 3
            $ ResizableTall 1 (3/100) (1/2) []
 monocle  = renamed [Replace "monocle"]
            $ smartBorders
@@ -173,13 +185,14 @@ grid     = renamed [Replace "grid"]
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
-           $ mySpacing 6
+           $ mySpacing 3
            $ mkToggle (single MIRROR)
            $ Grid (16/10)
 threeCol = renamed [Replace "threeCol"]
            $ smartBorders
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
+           $ mySpacing 3
            $ limitWindows 7
            $ ThreeCol 1 (3/100) (1/2)
 tabs     = renamed [Replace "tabs"]
@@ -222,7 +235,7 @@ myKeys =
     -- M -> Modifier, C -> Control, S -> Shift
     [ ("M-C-r", spawn "xmonad --recompile")
     , ("M-S-r", spawn "xmonad --restart")
-    , ("M-S-q", io exitSuccess)
+    , ("M-C-q", io exitSuccess)
 
     , ("M-<Return>", spawn (myTerminal))
     , ("M-d", spawn "rofi -show drun" )
@@ -240,10 +253,14 @@ myKeys =
     -- Scratchpad
     , ("C-s t", namedScratchpadAction myScratchPads "terminal")
     , ("M-s", namedScratchpadAction myScratchPads "terminal")
+    , ("M-b", namedScratchpadAction myScratchPads "firefox")
 
     -- Screenshots
-    , ("<Print>", spawn "maim /mnt/fast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg")
-    , ("M-<Print>", spawn "maim -s /mnt/fast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg")
+    , ("<Print>", spawn "maim /mnt/fast/onedrive/screenshots/screen-$(date +%Y-%m-%d_%H-%m-%s).jpg")
+    , ("M-<Print>", spawn "maim -s /mnt/fast/onedrive/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).jpg")
+
+    -- Lock
+    , ("M-S-l", spawn (myLock))
 
     -- Audio / Function Keys
     , ("<XF86AudioMute>", spawn "amixer set Master toggle")
@@ -251,6 +268,7 @@ myKeys =
     , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
     , ("<XF86MonBrightnessUp>", spawn "brightnessctl set +10%")
     , ("<XF86MonBrightnessDown>", spawn "brightnessctl set -10%")
+    , ("<XF86Lock>", spawn (myLock))
     ]
 
     -- The following lines are needed for named scratchpads.
@@ -276,7 +294,7 @@ main = do
         , logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP $ xmobarPP
                -- the following variables beginning with 'pp' are settings for xmobar.
                { ppOutput = \x -> hPutStrLn xmproc0 x                          -- xmobar on monitor 1
-                               >> hPutStrLn xmproc1 x                          -- xmobar on monitor 2
+--                             >> hPutStrLn xmproc1 x                          -- xmobar on monitor 2
                , ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]"           -- Current workspace
                , ppVisible = xmobarColor "#98be65" "" . clickable              -- Visible but not current workspace
                , ppHidden = xmobarColor "#82AAFF" "" . wrap "*" "" . clickable -- Hidden workspaces
