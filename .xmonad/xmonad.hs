@@ -256,8 +256,8 @@ myKeys =
     , ("M-b", namedScratchpadAction myScratchPads "firefox")
 
     -- Screenshots
-    , ("<Print>", spawn "maim /mnt/fast/onedrive/screenshots/screen-$(date +%Y-%m-%d_%H-%m-%s).jpg")
-    , ("M-<Print>", spawn "maim -s /mnt/fast/onedrive/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).jpg")
+    , ("<Print>", spawn "maim /mnt/fast/onedrive/screenshots/screen-$(date +%Y-%m-%d_%H-%m-%s).png")
+    , ("M-<Print>", spawn "maim -s /mnt/fast/onedrive/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).png")
 
     -- Lock
     , ("M-S-l", spawn (myLock))
