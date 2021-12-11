@@ -113,6 +113,7 @@ myStartupHook = do
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "firefox" spawnFirefox findFirefox manageFirefox
+                , NS "emacs" spawnEmacs findEmacs manageEmacs
                 ]
   where
     spawnTerm  = myTerminal ++ " -t scratchpad"
@@ -124,14 +125,21 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  t = 0.95 -h
                  l = 0.95 -w
     spawnFirefox = "firefox"
-    findFirefox = className =? "Firefox"
+    findFirefox = className =? "firefox"
     manageFirefox = customFloating $ W.RationalRect l t w h
                 where
                  h = 0.9
                  w = 0.9
                  t = 0.95 -h
                  l = 0.95 -w
-
+    spawnEmacs = "emacs"
+    findEmacs = className =? "Emacs"
+    manageEmacs = customFloating $ W.RationalRect l t w h
+                where
+                 h = 0.9
+                 w = 0.9
+                 t = 0.95 -h
+                 l = 0.95 -w
 -- Workspaces
 myWorkspaces = [" dash ", " dev ", " dev2 ", " dev 3 ", " vm ", " www ", " www2 ", " misc ", " spot", " trash "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
@@ -254,6 +262,7 @@ myKeys =
     , ("C-s t", namedScratchpadAction myScratchPads "terminal")
     , ("M-s", namedScratchpadAction myScratchPads "terminal")
     , ("M-b", namedScratchpadAction myScratchPads "firefox")
+    , ("M-e", namedScratchpadAction myScratchPads "emacs")
 
     -- Screenshots
     , ("<Print>", spawn "maim /mnt/fast/onedrive/screenshots/screen-$(date +%Y-%m-%d_%H-%m-%s).png")
@@ -281,7 +290,7 @@ main :: IO ()
 main = do
     -- Launch xmobar
     xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc0"
-    xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/xmobarrc1"
+    -- xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/xmobarrc1"
     xmonad $ ewmh def
         { modMask = myModMask
         , manageHook = myManageHook <+> manageDocks
