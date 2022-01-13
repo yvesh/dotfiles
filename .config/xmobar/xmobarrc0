@@ -19,7 +19,7 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=13:antialias=true:hinting=t
                     -- Time and date
                       Run Date "<fn=2>\xf017</fn>  %b %d %Y - (%H:%M) " "date" 50
                       -- Network up and down
-                    , Run Network "enp69s0f0" ["-t", "<fn=2>\xf0ab</fn>  <rx>kb  <fn=2>\xf0aa</fn>  <tx>kb"] 20
+                    , Run Network "enp5s0" ["-t", "<fn=2>\xf0ab</fn>  <rx>kb  <fn=2>\xf0aa</fn>  <tx>kb"] 20
                       -- Cpu usage in percent
                     , Run Cpu ["-t", "<fn=2>\xf108</fn>  cpu: (<total>%)","-H","50","--high","red"] 20
                       -- Ram used number and percent
@@ -35,27 +35,27 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=13:antialias=true:hinting=t
                 --                  , "--hwmon-path", "/sys/class/hwmon/hwmon5"
                 --                  ] 60
                     , Run K10Temp "0000:00:18.3"
-                                ["-t", "CPU-Temp: <Tdie>C | <Tccd1>C",
-                                 "-L", "40", "-H", "60",
+                                ["-t", "CPU-Temp: <Tctl> C ",
+                                 "-L", "60", "-H", "80",
                                  "-l", "green", "-n", "darkorange", "-h", "darkred"]
                                 50
 
                     -- battery monitor
-                    -- , Run Battery [ "--template" , "Battery: <acstatus>"
-                    --               , "--Low"      , "10"        -- units: %
-                    --               , "--High"     , "80"        -- units: %
-                    --               , "--low"      , "darkred"
-                    --               , "--normal"   , "darkorange"
-                    --               , "--high"     , "darkgreen"
+                    , Run Battery [ "--template" , "Battery: <acstatus>"
+                                   , "--Low"      , "10"        -- units: %
+                                   , "--High"     , "80"        -- units: %
+                                   , "--low"      , "darkred"
+                                   , "--normal"   , "darkorange"
+                                   , "--high"     , "darkgreen"
 
-                    --               , "--" -- battery specific options
-                    --                -- discharging status
-                    --               , "-o"	, "<left>% (<timeleft>)"
-                    --                -- AC "on" status
-                    --               , "-O"	, "<fc=#dAA520>Charging</fc>"
-                    --               -- charged status
-                    --               , "-i"	, "<fc=#006000>Charged</fc>"
-                    --               ] 50
+                                   , "--" -- battery specific options
+                                    -- discharging status
+                                   , "-o"	, "<left>% (<timeleft>)"
+                                    -- AC "on" status
+                                   , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                   -- charged status
+                                   , "-i"	, "<fc=#006000>Charged</fc>"
+                                   ] 50
 
                       -- Runs a standard shell command 'uname -r' to get kernel version
                     , Run Com "uname" ["-r"] "" 3600
@@ -63,5 +63,5 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=13:antialias=true:hinting=t
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{  <fc=#666666>|</fc>  <fc=#b3afc2><fn=3></fn>  <action=`alacritty -e htop`>%uname%</action> </fc> <fc=#666666>|</fc>  <fc=#ecbe7b> <action=`alacritty -e htop`>%cpu%</action> </fc> <fc=#666666>|</fc> <fc=#ff6c6b> <action=`alacritty -e htop`>%memory%</action> </fc> <fc=#666666>|</fc>  <fc=#98be65> <action=`alacritty -e iftop`>%enp69s0f0%</action> </fc> <fc=#666666>|</fc> <fc=#888888>%k10temp%</fc> <fc=#666666>|</fc> <fc=#46d9ff> <action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(bytee/year-calendar))'`>%date%</action>  </fc>"
+       , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{  <fc=#666666>|</fc>  <fc=#b3afc2><fn=3></fn>  <action=`alacritty -e htop`>%uname%</action> </fc> <fc=#666666>|</fc>  <fc=#ecbe7b> <action=`alacritty -e htop`>%cpu%</action> </fc> <fc=#666666>|</fc> <fc=#ff6c6b> <action=`alacritty -e htop`>%memory%</action> </fc> <fc=#666666>|</fc>  <fc=#98be65> <action=`alacritty -e iftop`>%enp5s0%</action> </fc> <fc=#666666>|</fc> <fc=#888888>%k10temp%</fc> <fc=#666666>|</fc> <fc=#888888>%battery%</fc> <fc=#666666>|</fc>  <fc=#46d9ff> <action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(bytee/year-calendar))'`>%date%</action>  </fc>"
        }

@@ -125,7 +125,7 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  t = 0.95 -h
                  l = 0.95 -w
     spawnFirefox = "firefox"
-    findFirefox = className =? "firefox"
+    findFirefox = className =? "Firefox"
     manageFirefox = customFloating $ W.RationalRect l t w h
                 where
                  h = 0.9
@@ -265,8 +265,8 @@ myKeys =
     , ("M-e", namedScratchpadAction myScratchPads "emacs")
 
     -- Screenshots
-    , ("<Print>", spawn "maim /mnt/fast/onedrive/screenshots/screen-$(date +%Y-%m-%d_%H-%m-%s).png")
-    , ("M-<Print>", spawn "maim -s /mnt/fast/onedrive/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).png")
+    , ("<Print>", spawn "maim /mnt/ultrafast/onedrive/screenshots/screen-$(date +%Y-%m-%d_%H-%m-%s).png")
+    , ("M-<Print>", spawn "maim -s /mnt/ultrafast/onedrive/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).png")
 
     -- Lock
     , ("M-S-l", spawn (myLock))
