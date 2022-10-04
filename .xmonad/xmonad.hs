@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-deprecations #-}
 -- Simple xmonad config, mostly based on DT's one with some customizations and removed features
 -- use xmonad --recompile to recompile it
 
@@ -63,7 +64,7 @@ import qualified Data.Map as M
 -- Hooks
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
+import XMonad.Hooks.ManageDocks (avoidStruts, docks, docksEventHook, manageDocks, ToggleStruts(..))
 
 -- Utilities
 import XMonad.Util.SpawnOnce
@@ -125,7 +126,7 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  t = 0.95 -h
                  l = 0.95 -w
     spawnFirefox = "firefox"
-    findFirefox = className =? "Firefox"
+    findFirefox = className =? "firefox"
     manageFirefox = customFloating $ W.RationalRect l t w h
                 where
                  h = 0.9
@@ -243,6 +244,7 @@ myKeys =
     -- M -> Modifier, C -> Control, S -> Shift
     [ ("M-C-r", spawn "xmonad --recompile")
     , ("M-S-r", spawn "xmonad --restart")
+    , ("M-S-q", spawn "xmonad --restart")
     , ("M-C-q", io exitSuccess)
 
     , ("M-<Return>", spawn (myTerminal))
@@ -291,7 +293,7 @@ main = do
     -- Launch xmobar
     xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc0"
     -- xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/xmobarrc1"
-    xmonad $ ewmh def
+    xmonad $ docks $ ewmh def
         { modMask = myModMask
         , manageHook = myManageHook <+> manageDocks
         , handleEventHook = fullscreenEventHook <+> docksEventHook

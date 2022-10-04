@@ -112,3 +112,4 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 ### End of Zinit's installer chunk
+### End of Zinit's installer chunk
