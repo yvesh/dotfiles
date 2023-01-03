@@ -100,20 +100,24 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myStartupHook :: X ()
 myStartupHook = do
 -- Starting picom, gnome-keyring etc. through nixos configuration
+--  spawnOnce "dbus-launch --sh-syntax --exit-with-session /usr/bin/xmonad"
     spawnOnce "picom &"
     spawnOnce "emacs --daemon &"
+    spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &" -- simple tray
 --   spawnOnce "polybar bytee &" -- Using xmobar instead
 --   spawnOnce "polybar bytee2 &"
     spawnOnce "~/.fehbg &" -- last background
     spawnOnce "copyq &" -- Clipboard manager
-    spawnOnce "numlockx on &" -- Clipboard manager
-    spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &" -- simple tray
+    spawnOnce "setxkbmap de"
+    spawnOnce "numlockx on &" -- Numlock enable
     spawnOnce "xss-lock i3lock-fancy-rapid 3 5 &"
+    spawnOnce "gnome-keyring-daemon --start"
     setWMName "LG3D" -- compat for things like Jetbrains IDE and others
 
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "firefox" spawnFirefox findFirefox manageFirefox
+                , NS "vivaldi" spawnVivaldi findVivaldi manageVivaldi
                 , NS "emacs" spawnEmacs findEmacs manageEmacs
                 ]
   where
@@ -128,6 +132,14 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
     spawnFirefox = "firefox"
     findFirefox = className =? "firefox"
     manageFirefox = customFloating $ W.RationalRect l t w h
+                where
+                 h = 0.9
+                 w = 0.9
+                 t = 0.95 -h
+                 l = 0.95 -w
+    spawnVivaldi = "vivaldi"
+    findVivaldi = appName =? "vivaldi-stable"
+    manageVivaldi = customFloating $ W.RationalRect l t w h
                 where
                  h = 0.9
                  w = 0.9
@@ -264,6 +276,7 @@ myKeys =
     , ("C-s t", namedScratchpadAction myScratchPads "terminal")
     , ("M-s", namedScratchpadAction myScratchPads "terminal")
     , ("M-b", namedScratchpadAction myScratchPads "firefox")
+    , ("M-v", namedScratchpadAction myScratchPads "vivaldi")
     , ("M-e", namedScratchpadAction myScratchPads "emacs")
 
     -- Screenshots

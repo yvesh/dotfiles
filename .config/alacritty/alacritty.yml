@@ -1,5 +1,5 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
-# v2020-06-11
+# v2023-01-02
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -68,7 +68,7 @@ window:
 
   # Window class (Linux only):
   #class: Alacritty
-  opacity: 0.9
+  opacity: 0.7
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -167,7 +167,7 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  use_thin_strokes: true
+  # use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
