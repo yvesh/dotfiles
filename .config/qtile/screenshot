@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-maim "/mnt/fast/onedrive/screenshots/screen_$(date +%Y-%m-%d_%H-%M-%S).jpg"
+maim "/mnt/ultrafast/onedrive/screenshots/screen_$(date +%Y-%m-%d_%H-%M-%S).jpg"
 

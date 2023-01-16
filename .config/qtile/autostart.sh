@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-# picom &
+gnome-keyring-daemon --start &
+picom &
 # emacs --daemon &
 ~/.fehbg &
 numlockx on &
-# copyq &
+dunst &
+copyq &
 xss-lock i3lock-fancy-rapid 3 5 &
+

@@ -16,13 +16,12 @@ input * xkb_layout de
 
 # output HDMI-A-1 pos 0 0 res 5120x1440@69.973000Hz
 # output DP-2 transform 90 pos 5120 0 mode 2560x1440@143.912003Hz 
-output DP-1 pos 0 0 res 2560x1440@143.972000Hz
-output DP-2 pos 2560 0 res 2560x1440@143.972000Hz
-output DP-3 transform 90 pos 5120 0 mode 2560x1440@59.951000Hz
+output DP-1 pos 0 0 res 3840x2160@144.000Hz
+output DP-2 pos 3840 0 res 3840x2160@143.963Hz
 
 # focus output DP-1
 
-output "*" background /mnt/ultrafast/nextcloud/home/wallpaper/2020/purple-space-abstract.jpg fill
+output "*" background /mnt/ultrafast/onedrive/home/wallpaper/2023/space-astronaut-ai-art-4k.jpg fill
 
 set $mod Mod4
 

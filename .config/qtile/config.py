@@ -1,5 +1,5 @@
 # Simple qTile config
-# v0.3.3 (2021-07-30)
+# v0.4.0 (2023-01-15)
 
 import os
 import subprocess
@@ -7,7 +7,7 @@ import subprocess
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Screen, DropDown, ScratchPad, Key
+from libqtile.config import Click, Drag, Group, Screen, DropDown, ScratchPad, Key, Match
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -25,14 +25,13 @@ def start_once():
 
 keys = [
     # Switch between windows in current stack pane
-    Key([mod], "k", lazy.layout.down(),
-        desc="Move focus down in stack pane"),
-    Key([mod], "j", lazy.layout.up(),
-        desc="Move focus up in stack pane"),
+    Key([mod], "h", lazy.layout.next(), desc="Switch window focus to other pane(s) of stack"),
+    Key([mod], "l", lazy.layout.prev(), desc="Switch to previous"),
+    Key([mod], "k", lazy.layout.down(), desc="Move focus down in stack pane"),
+    Key([mod], "j", lazy.layout.up(), desc="Move focus up in stack pane"),
 
     # Program launcher
-    Key([mod], "r", lazy.spawncmd(),
-        desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "d", lazy.spawn("rofi -show drun"), desc="Launch Rofi"),
     Key([mod, "shift"], "e", lazy.spawn("emacsclient -c -a emacs"), desc="Launch Emacs"),
@@ -66,7 +65,7 @@ keys = [
     Key([mod], "period", lazy.layout.flip()),
 
     # Switch window focus to other pane(s) of stack
-    Key([mod], "space", lazy.layout.next(), desc="Switch window focus to other pane(s) of stack"),
+    Key([mod], "n", lazy.layout.next(), desc="Switch window focus to other pane(s) of stack"),
 
     # Swap panes of split stack
     Key([mod, "shift"], "space", lazy.layout.rotate(), desc="Swap panes of split stack"),
@@ -76,10 +75,14 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
+
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "space", lazy.next_layout(), desc="Toggle between layouts"),
 
     # Scratchpad
     Key([mod], "s", lazy.group["scratchpad"].dropdown_toggle("term")),
+    Key([mod], "v", lazy.group["scratchpad"].dropdown_toggle("vivaldi")),
+    Key([mod], "b", lazy.group["scratchpad"].dropdown_toggle("firefox")),
 
     # Kill Window
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -87,7 +90,9 @@ keys = [
     # Restart / Logout
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
-    Key([mod], "l", lazy.spawn("i3lock-fancy-rapid 5 3"), desc="Lock screen"),
+
+    # Lock window
+    Key([mod, "shift"], "l", lazy.spawn("i3lock-fancy-rapid 5 3"), desc="Lock screen"),
 
     # Screenshot
     Key([], "Print", lazy.spawn(f"'{scripts_path}/screenshot'"), desc="Screenshot"),
@@ -117,6 +122,8 @@ groups = [
    Group("trash"),
    ScratchPad("scratchpad", dropdowns=[
        DropDown("term", "alacritty"),
+       DropDown("vivaldi", "vivaldi", width = 0.6, height = 0.7, opacity = 1, x = 0.2, y = 0.1, on_focus_lost_hide = False),
+       DropDown("firefox", "firefox", width = 0.6, height = 0.7, opacity = 1, x = 0.2, y = 0.1, on_focus_lost_hide = False),
    ]),
 ]
 
@@ -138,7 +145,7 @@ for i, group in enumerate(groups):
             desc="Switch to group {}".format(group.name)),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], group_key, lazy.window.togroup(group.name, switch_group=True),
+        Key([mod, "shift"], group_key, lazy.window.togroup(group.name, switch_group=False),
             desc="Switch to & move focused window to group {}".format(group.name)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
@@ -165,8 +172,8 @@ layouts = [
 
 widget_defaults = dict(
     font='sans',
-    fontsize=12,
-    padding=3,
+    fontsize=15,
+    padding=8,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -187,35 +194,38 @@ screens = [
                 ),
                 widget.Sep(linewidth=0, padding=60),
                 widget.Net(
-                       interface = "enp36s0f0",
+                       interface = "enp16s0",
                        format = '{down} ↓↑ {up}',
                        padding = 5
                 ),
-                widget.Systray(),
                 widget.Sep(linewidth=0, padding=15),
-                # widget.ThermalSensor(),
+                widget.CPU(),
+                widget.Sep(linewidth=0, padding=15),
+                widget.ThermalSensor(tag_sensor="Tctl"),
                 widget.Sep(linewidth=0, padding=15),
                 widget.Memory(),
                 widget.Sep(linewidth=0, padding=15),
                 widget.TextBox(Text="Vol.", foreground='#ffffff'),
                 widget.Volume(),
                 widget.Sep(linewidth=0, padding=15),
+                widget.Systray(),
+                widget.Sep(linewidth=0, padding=15),
                 widget.Clock(format='%a, %d-%m %H:%M'),
             ],
             24,
         ),
     ),
-#    Screen(
-#        top=bar.Bar(
-#            [
-#                widget.CurrentLayout(),
-#                widget.GroupBox(),
-#                widget.WindowName(),
-#                widget.Clock(format='%a, %d-%m %H:%M'),
-#            ],
-#            24,
-#        ),
-#    ),
+    Screen(
+        top=bar.Bar(
+            [
+                widget.CurrentLayout(),
+                widget.GroupBox(),
+                widget.WindowName(),
+                widget.Clock(format='%a, %d-%m %H:%M'),
+           ],
+           24,
+        ),
+    ),
 ]
 
 # Drag floating layouts.
@@ -235,27 +245,18 @@ bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
-    {'wname': 'print'},  # Print dialog
-    {'wname': 'Print'},  # System Print Dialog
-    {'wname': 'Confirm Exit'},  # Exit DIalog
-    {'wmclass': 'ssh-askpass'},  # ssh-askpass
-    {'role': 'about'}, # Default role
-    {'wm_type': 'dialog'}, # Default role
-    {'wm_type': 'notification'}, # Default role
-    {'wm_type': 'splash'}, # Default role
+    *layout.Floating.default_float_rules,
+    Match(wm_class='confirmset'),
+    Match(wm_class='confirm'),
+    Match(wm_class='dialog'),
+    Match(wm_class='download'),
+    Match(wm_class='file_progress'),
+    Match(wm_class='ssh-askpass'),
+    Match(wm_class='notification'),
+    Match(wm_class='maketag'),
+    Match(wm_class='makebranch'),
+    Match(title='branchdialog'),
+    Match(title='pinentry'),
 ])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
