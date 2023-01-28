@@ -1,0 +1,123 @@
+{
+  "layer": "top", // Waybar at top layer
+  // "position": "bottom", // Waybar position (top|bottom|left|right)
+  // "height": 28,
+  // "width": 1280, // Waybar width
+  "spacing": 8, // Gaps between modules
+  "margin": "0 10 0 10", // Waybar margin (top right bottom left)
+  "fixed-center": false, // Center modules
+  // Choose the order of the modules
+  "modules-left": ["wlr/workspaces", "custom/spotify"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+    "memory",
+    "temperature",
+    "pulseaudio",
+    "network",
+    "clock",
+    "custom/weather",
+    "tray",
+    "custom/power-menu"
+  ],
+  //  Modules configuration
+  "wlr/workspaces": {
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1: ",
+      "2": "2:  ",
+      "3": "3:  ",
+      "4": "4:  ",
+      "5": "5: ",
+      "6": "6: ",
+      "7": "7: ",
+      "8": "8: ",
+      "9": "9: ",
+      "urgent": "",
+//      "active": "",
+      "default": ""
+    }
+  },
+  "hyprland/window": {
+    "format": "{}"
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 5
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": " {:%a %b %d}",
+    "format": " {:%a, %F %H:%M}",
+    "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
+    "format-calendar": "<span color='#ecc6d9'><b>{}</b></span>",
+    "format-calendar-weeks": "<span color='#99ffdd'><b>W{:%U}</b></span>",
+    "format-calendar-weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+    "on-scroll": {
+      "calendar": 1
+    }
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {used:0.1f}G / {total:0.1f}G",
+    "on-click": "alacritty -e btop",
+    "tooltip": false
+  },
+  "network": {
+    "interface": "enp16s0", // (Optional) To force the use of this interface
+    "format-wifi": "直 {signalStrength}%",
+    "format-ethernet": " {ipaddr}",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "睊",
+    "on-click": "nm-applet"
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{volume}%  {format_source}",
+    "format-bluetooth-muted": "婢 ",
+    "format-muted": "婢",
+    // "format-source": "{volume}% ",
+    // "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+  },
+  "custom/spotify": {
+    "exec": "python ~/.config/waybar/scripts/mediaplayer.py --player spotify",
+    "format": " {}",
+    "return-type": "json",
+    "on-click": "playerctl --player=spotify play-pause",
+    "on-scroll-down": "playerctl --player=spotify next",
+    "on-scroll-up": "playerctl --player=spotify previous",
+    "tooltip": false
+  },
+  "custom/weather": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "python ~/.config/waybar/scripts/weather.py",
+    "return-type": "json"
+  },
+  "custom/power-menu": {
+    "format": "⏻",
+    "on-click": "~/.config/waybar/scripts/power-menu/powermenu.sh"
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+	"format-icons": ["", "", ""]
+  }
+}
+
