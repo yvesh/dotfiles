@@ -1,8 +1,8 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: JetBrainsMono Nerd Font;
-  font-size: 15px;
-  border-radius: 15px;
+  font-size: 12px;
+  border-radius: 8px;
 }
 
 #clock,
@@ -19,13 +19,13 @@
 #temperature,
 #cpu,
 #tray {
-  padding: 3px 15px;
+  padding: 1px 15px;
   border-radius: 12px;
   background: rgba(30, 30, 46, 0.6);
   color: rgb(180, 190, 254);
   box-shadow: rgba(17, 17, 27, 0.2) 0 0 3 2px;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   margin-right: 2px;
   margin-left: 2px;
   transition: all 0.3s ease;
@@ -64,7 +64,7 @@ window * {
 #workspaces {
   background-color: transparent;
   border-radius: 17px;
-  padding: 5 0px;
+  padding: 2px 0px;
   margin-top: 3px;
   margin-bottom: 3px;
 }

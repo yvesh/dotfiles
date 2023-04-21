@@ -4,7 +4,7 @@
   // "height": 28,
   // "width": 1280, // Waybar width
   "spacing": 8, // Gaps between modules
-  "margin": "0 10 0 10", // Waybar margin (top right bottom left)
+  "margin": "0 0 0 10", // Waybar margin (top right bottom left)
   "fixed-center": false, // Center modules
   // Choose the order of the modules
   "modules-left": ["wlr/workspaces", "custom/spotify"],
