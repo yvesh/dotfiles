@@ -289,10 +289,13 @@ myKeys =
 
     -- Audio / Function Keys
     , ("<XF86AudioMute>", spawn "amixer set Master toggle")
-    , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
-    , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
-    , ("<XF86MonBrightnessUp>", spawn "brightnessctl set +10%")
-    , ("<XF86MonBrightnessDown>", spawn "brightnessctl set -10%")
+    , ("<XF86AudioLowerVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
+    , ("<XF86AudioRaiseVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
+    , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
+    , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")
+    , ("<XF86AudioPlay>", spawn "playerctl play-pause")
+    , ("<XF86AudioStop>", spawn "playerctl pause")
+    , ("<XF86AudioNext>", spawn "playerctl next")
     , ("<XF86Lock>", spawn (myLock))
     ]
 

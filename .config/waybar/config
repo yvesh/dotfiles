@@ -4,7 +4,7 @@
   // "height": 28,
   // "width": 1280, // Waybar width
   "spacing": 8, // Gaps between modules
-  "margin": "0 10 0 10", // Waybar margin (top right bottom left)
+  "margin": "0 0 0 10", // Waybar margin (top right bottom left)
   "fixed-center": false, // Center modules
   // Choose the order of the modules
   "modules-left": ["wlr/workspaces", "custom/spotify"],
@@ -16,6 +16,7 @@
     "network",
     "clock",
     "custom/weather",
+    "battery",
     "tray",
     "custom/power-menu"
   ],
@@ -108,6 +109,17 @@
     "interval": 3600,
     "exec": "python ~/.config/waybar/scripts/weather.py",
     "return-type": "json"
+  },
+  "battery": {
+    "bat": "BAT0",
+    "interval": 60,
+    "states": {
+        "warning": 30,
+        "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""],
+    "max-length": 25
   },
   "custom/power-menu": {
     "format": "⏻",

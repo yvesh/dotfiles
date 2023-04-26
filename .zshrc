@@ -63,10 +63,10 @@ zinit ice wait"0" atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait"0" atinit"zpcompinit; zpcdreplay"
-zinit light zdharma-continuum/fast-syntax-highlighting
+# zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit light zsh-users/zsh-history-substring-search
-zinit light trapd00r/zsh-syntax-highlighting-filetypes
+# zinit light trapd00r/zsh-syntax-highlighting-filetypes
 
 # zplugin ice pick"async.zsh" src"pure.zsh"; zplugin light sindresorhus/pure
 
