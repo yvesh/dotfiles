@@ -10,10 +10,10 @@ Personal Linux / Unix dot files 2023. Recently cleaned them up and using a bareb
 | **Distro:** | Gentoo, NixOS, Arch .. |
 | **Terminal:** | alacritty, kitty, urxvt, st |
 | **Shell:** | zsh + zinit + bullet-train, fish |
-| **Editor:** | doom emacs, vim |
-| **DM:** | sddm |
-| **WM:** | hyprland, qtile, xmonad, bspwm, sway |
-| **Launcher:** | rofi |
+| **Editor:** | nvim, doom emacs, vim |
+| **DM:** | sddm, none |
+| **WM:** | hyprland, xmonad, qtile, bspwm, sway |
+| **Launcher:** | rofi, wofi |
 | **Browser:** | firefox, chromium, vivalidi |
 
 ------
@@ -36,26 +36,27 @@ Personal Linux / Unix dot files 2023. Recently cleaned them up and using a bareb
 
 ### Windowmanagers / Display Manager
 
-* Hyprland -- Current WM
+* hyprland -- Current main WM
+* xmonad -- 2nd most used WM, when the hype is over and i go back to X11
 * qtile -- Still in love
-* xmonad -- Still in love
 * bspwm -- Before xmonad
 * sway / i3-gaps -- Before bspwm
-* sddm -- display manager (If I use one)
+* sddm -- display manager (Rarely use one nowadays)
 
 ### Bars
 
 * waybar -- Bar for Hyprland
 * xmobar -- Bar for xmonad
-* Polybar -- Bar for bspwm
-* Bumblebee Status -- Bar on i3 / sway 
+* polybar -- Bar for bspwm
+* bumblebee status -- Bar on i3 / sway 
 
 ### IDE
 
-* Doom Emacs -- Replaced vim as default editor
-* vim -- Using dein as plugin manager, not using as many plugins nowadays.
-* Visual Studio Code -- Main IDE and daily driver
-* Jetbrains IDEs (PyCharm, IntelliJ IDEA, PhpStorm, WebStorm..) -- Still prefering them for certain projects and languages over VS Code
+* neovim -- My daily driver 2023
+* Visual Studio Code -- When I can't use neovim
+* Jetbrains IDEs (PyCharm, IntelliJ IDEA, PhpStorm, WebStorm..) -- Still prefering them for certain projects and languages over VS Code and neovim (Intellij Code)
+* Doom Emacs -- Main IDE back in the early 2020s
+* vim -- Replaced by Neovim nowadays
 
 ### Notifications
 
@@ -64,8 +65,8 @@ Personal Linux / Unix dot files 2023. Recently cleaned them up and using a bareb
 
 ### Lockscreen
 
-* swaylock-effects -- wayland
 * i3lock-fancy-rapid -- Very fast rewrite of i3lock-fancy in C++
+* swaylock-effects -- wayland
 
 ### Fonts
 
