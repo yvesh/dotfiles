@@ -113,3 +113,10 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 ### End of Zinit's installer chunk
 ### End of Zinit's installer chunk
+
+# bun completions
+[ -s "/home/bytee/.bun/_bun" ] && source "/home/bytee/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

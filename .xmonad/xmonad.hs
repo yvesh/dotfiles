@@ -85,7 +85,7 @@ myBrowser :: String
 myBrowser = "vivaldi"
 
 myEditor :: String
-myEditor = "vim"
+myEditor = "nvim"
 
 myLock :: String
 myLock = "i3lock-fancy-rapid 5 3"
@@ -217,6 +217,8 @@ threeCol = renamed [Replace "threeCol"]
            $ mySpacing 3
            $ limitWindows 7
            $ ThreeCol 1 (3/100) (1/2)
+
+ 
 tabs     = renamed [Replace "tabs"]
            -- I cannot add spacing to this layout because it will
            -- add spacing between window and tabs which looks bad.
@@ -266,10 +268,9 @@ myKeys =
 
     , ("M-q", kill1)
 
-    , ("M-S-f", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
+    , ("M-f", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
 
     -- Floating windows
-    , ("M-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
     , ("M-t", withFocused $ windows . W.sink)  -- Push floating window back to tile
     , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
 
@@ -277,8 +278,8 @@ myKeys =
     , ("C-s t", namedScratchpadAction myScratchPads "terminal")
     , ("M-s", namedScratchpadAction myScratchPads "terminal")
     , ("M-b", namedScratchpadAction myScratchPads "firefox")
-    , ("M-v", namedScratchpadAction myScratchPads "vivaldi")
-    , ("M-e", namedScratchpadAction myScratchPads "emacs")
+    --  , ("M-v", namedScratchpadAction myScratchPads "vivaldi")
+    , ("M-e", namedScratchpadAction myScratchPads "nvim")
 
     -- Screenshots
     , ("<Print>", spawn "maim /mnt/ultrafast/onedrive/screenshots/screen-$(date +%Y-%m-%d_%H-%m-%s).png")
