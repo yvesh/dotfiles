@@ -45,7 +45,7 @@ alias ls='ls --color'
 alias ssh='TERM=xterm-256color \ssh'
 alias cdwww='cd ~/srv'
 alias em="emacsclient -nw"
-# alias vim="em"
+alias vim="nvim"
 alias emacs="emacsclient -c -a 'emacs'"
 alias grep='grep --color=auto'
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -110,13 +110,10 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
-
 # bun completions
 [ -s "/home/bytee/.bun/_bun" ] && source "/home/bytee/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+

@@ -1,6 +1,7 @@
 {-# OPTIONS_GHC -Wno-deprecations #-}
 -- Simple xmonad config, mostly based on DT's one with some customizations and removed features
--- use xmonad --recompile to recompile it
+-- last update: 2023-10-15
+-- use xmonad --recompile && xmonad --restart to recompile and use it
 
 -- Base
 import XMonad
@@ -185,7 +186,7 @@ mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 -- Below is a variation of the above except no borders are applied
 -- if fewer than two windows. So a single window has no gaps.
 mySpacing' :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
-mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
+mySpacing' i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
 tall     = renamed [Replace "tall"]
            $ smartBorders
@@ -250,8 +251,8 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                    ||| noBorders monocle
                                    ||| floats
                                    ||| noBorders tabs
-                                   ||| grid
-                                   ||| threeCol
+                                   ||| withBorder myBorderWidth grid
+                                   ||| withBorder myBorderWidth threeCol
 
 -- Keybinds
 myKeys :: [(String, X ())]
