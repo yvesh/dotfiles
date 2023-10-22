@@ -1,4 +1,4 @@
-# i3-gaps config - v2019-09-22
+# i3-gaps config - v2023-10-22
 # 
 # Maintainer:
 #   Yves Hoppe <info@yveshoppe.de>
@@ -10,7 +10,7 @@ set $mod Mod4
 font pango:monospace 0 
 
 # we use comptone highlighting instead
-new_window pixel 0 
+new_window pixel 2 
 
 # class                 border  backgr. text    indicator
 client.focused          #ff8c1a #ff8c1a #ffffff #ff8c1a
@@ -21,15 +21,17 @@ hide_edge_borders both
 
 # Gaps
 gaps inner 8
-gaps outer 0 
-border_radius 5
-border radius 5
+gaps outer 0
+
+# border_radius 5
+# border radius 5
 
 # No gaps on workspace 3
 # workspace 3 gaps inner 0
 
-# 
+# Use smart gaps and borders
 smart_gaps on
+smart_borders on
 
 # Workspace names
 # Dashboard
@@ -158,6 +160,9 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace 0
+bindsym $mod+Shift+b move scratchpad
+bindsym $mod+b [class="firefox"] scratchpad show
+bindsym $mod+n [class="notion-snap-reborn"] scratchpad show
 
 assign [class="Chrome"] 2 www
 
@@ -214,10 +219,11 @@ bar {
 
 # Positioning monitors
 # exec --no-startup-id bash ~/rotate_24.sh
-exec --no-startup-id bash ~/./screenlayout/default.sh
+# exec --no-startup-id bash ~/./screenlayout/default.sh
 
 # Compton
 # exec --no-startup-id compton -b --backend glx 
+exec --no-startup-id picom
 
 # exec --no-startup-id xrandr --output eDP1 --mode 1920x1080
 
@@ -265,9 +271,9 @@ exec --no-startup-id nm-applet --no-agent
 exec --no-startup-id xss-lock i3lock-fancy-rapid 3 5
 
 # Make sure pulseaudio is started
-exec --no-startup-id pulseaudio --start
+# exec --no-startup-id pulseaudio --start
 
-exec --no-startup-id ~/.screenlayout/default.sh
+#  exec --no-startup-id ~/.screenlayout/default.sh
 
 # Set background
 exec --no-startup-id ~/.fehbg

@@ -101,10 +101,10 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myStartupHook :: X ()
 myStartupHook = do
 -- Starting picom, gnome-keyring etc. through nixos configuration
---  spawnOnce "dbus-launch --sh-syntax --exit-with-session /usr/bin/xmonad"
+    spawnOnce "dbus-launch --sh-syntax --exit-with-session /usr/bin/xmonad"
 --  spanOnce "dunst &"
     spawnOnce "picom &"
-    spawnOnce "emacs --daemon &"
+--    spawnOnce "emacs --daemon &"
     spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &" -- simple tray
 --   spawnOnce "polybar bytee &" -- Using xmobar instead
 --   spawnOnce "polybar bytee2 &"
@@ -114,6 +114,7 @@ myStartupHook = do
     spawnOnce "numlockx on &" -- Numlock enable
     spawnOnce "xss-lock i3lock-fancy-rapid 3 5 &"
     spawnOnce "gnome-keyring-daemon --start"
+    spawnOnce "mako"
     setWMName "LG3D" -- compat for things like Jetbrains IDE and others
 
 myScratchPads :: [NamedScratchpad]
@@ -121,6 +122,7 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "firefox" spawnFirefox findFirefox manageFirefox
                 , NS "vivaldi" spawnVivaldi findVivaldi manageVivaldi
                 , NS "emacs" spawnEmacs findEmacs manageEmacs
+                , NS "notion" spawnNotion findNotion manageNotion
                 ]
   where
     spawnTerm  = myTerminal ++ " -t scratchpad"
@@ -155,6 +157,16 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                  w = 0.9
                  t = 0.95 -h
                  l = 0.95 -w
+    spawnNotion = "notion-snap-reborn"
+    findNotion = className =? "notion-snap-reborn"
+    manageNotion = customFloating $ W.RationalRect l t w h
+                where
+                 h = 0.9
+                 w = 0.9
+                 t = 0.95 -h
+                 l = 0.95 -w
+
+
 -- Workspaces
 myWorkspaces = [" dash ", " dev ", " dev2 ", " dev 3 ", " vm ", " www ", " www2 ", " misc ", " spot", " trash "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
@@ -276,11 +288,11 @@ myKeys =
     , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
 
     -- Scratchpad
-    , ("C-s t", namedScratchpadAction myScratchPads "terminal")
     , ("M-s", namedScratchpadAction myScratchPads "terminal")
     , ("M-b", namedScratchpadAction myScratchPads "firefox")
     --  , ("M-v", namedScratchpadAction myScratchPads "vivaldi")
-    , ("M-e", namedScratchpadAction myScratchPads "nvim")
+    , ("M-e", namedScratchpadAction myScratchPads "emacs")
+    , ("M-n", namedScratchpadAction myScratchPads "notion")
 
     -- Screenshots
     , ("<Print>", spawn "maim /mnt/ultrafast/onedrive/screenshots/screen-$(date +%Y-%m-%d_%H-%m-%s).png")

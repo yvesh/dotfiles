@@ -7,5 +7,6 @@ picom &
 numlockx on &
 dunst &
 copyq &
+setxkbmap de &
 xss-lock i3lock-fancy-rapid 3 5 &
 

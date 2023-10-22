@@ -1,5 +1,5 @@
 # Simple qTile config
-# v0.4.0 (2023-01-15)
+# v0.5.0 (2023-10-22)
 
 import os
 import subprocess
@@ -34,7 +34,7 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "d", lazy.spawn("rofi -show drun"), desc="Launch Rofi"),
-    Key([mod, "shift"], "e", lazy.spawn("emacsclient -c -a emacs"), desc="Launch Emacs"),
+    # Key([mod, "shift"], "e", lazy.spawn("emacsclient -c -a emacs"), desc="Launch Emacs"),
 
     # Switch Monitor (same as xmonad)
     Key([mod], "w", lazy.to_screen(0), desc="Focus first monitor"),
@@ -65,7 +65,7 @@ keys = [
     Key([mod], "period", lazy.layout.flip()),
 
     # Switch window focus to other pane(s) of stack
-    Key([mod], "n", lazy.layout.next(), desc="Switch window focus to other pane(s) of stack"),
+    Key([mod], "h", lazy.layout.next(), desc="Switch window focus to other pane(s) of stack"),
 
     # Swap panes of split stack
     Key([mod, "shift"], "space", lazy.layout.rotate(), desc="Swap panes of split stack"),
@@ -83,6 +83,7 @@ keys = [
     Key([mod], "s", lazy.group["scratchpad"].dropdown_toggle("term")),
     Key([mod], "v", lazy.group["scratchpad"].dropdown_toggle("vivaldi")),
     Key([mod], "b", lazy.group["scratchpad"].dropdown_toggle("firefox")),
+    Key([mod, "shift"], "n", lazy.group["scratchpad"].dropdown_toggle("notion")),
 
     # Kill Window
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -99,31 +100,32 @@ keys = [
     Key([mod], "Print", lazy.spawn(f"'{scripts_path}/area'"), desc="Select area for Screenshot"),
 
     # Audio Keys
-    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")),
 
     # Other media
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set -10%")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10")),
 ]
 
 # Workspaces
 groups = [
-   Group("dash", {'layout': 'monadtall'}),
-   Group("dev1", {'layout': 'max'}),
-   Group("dev2", {'layout': 'max'}),
-   Group("dev3", {'layout': 'max'}),
-   Group("vm", {'layout': 'monadtall'}),
-   Group("www1", {'layout': 'stack'}),
-   Group("www2", {'layout': 'stack'}),
-   Group("misc", {'layout': 'monadtall'}),
+   Group("dash", layout="columns"),
+   Group("dev1", layout='monadthreecol'),
+   Group("dev2", layout='monadthreecol'),
+   Group("dev3", layout='monadthreecol'),
+   Group("vm", layout='columns'),
+   Group("www1", layout='stack'),
+   Group("www2", layout='stack'),
+   Group("misc", layout='monadtall'),
    Group("spot"),
    Group("trash"),
-   ScratchPad("scratchpad", dropdowns=[
-       DropDown("term", "alacritty"),
-       DropDown("vivaldi", "vivaldi", width = 0.6, height = 0.7, opacity = 1, x = 0.2, y = 0.1, on_focus_lost_hide = False),
-       DropDown("firefox", "firefox", width = 0.6, height = 0.7, opacity = 1, x = 0.2, y = 0.1, on_focus_lost_hide = False),
+   ScratchPad("scratchpad", [
+       DropDown("term", "alacritty", width=0.4, x=0.3),
+       DropDown("vivaldi", "vivaldi", width=0.35, height=0.8, opacity=1, x=0.52, y=0.1, on_focus_lost_hide=False),
+       DropDown("firefox", "firefox", width=0.35, height=0.8, opacity=1, x=0.52, y=0.1, on_focus_lost_hide=False),
+       DropDown("notion", "notion-snap-reborn", width=0.3, height=0.6, opacity=1, x=0.2, y=0.1, on_focus_lost_hide=False),
    ]),
 ]
 
@@ -156,12 +158,13 @@ for i, group in enumerate(groups):
 
 layouts = [
     layout.Max(),
-    layout.Stack(num_stacks=3, margin=6),
+    layout.Stack(num_stacks=4, margin=6),
     layout.MonadTall(border_width=2, margin=6),
     layout.TreeTab(),
-    layout.Columns(margin=4, num_columns=3),
+    layout.Columns(margin=4, num_columns=4),
+    layout.MonadThreeCol(),
     # Try more layouts by unleashing below layouts.
-    # layout.Bsp(),
+    layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadWide(),
     # layout.RatioTile(),
@@ -215,17 +218,17 @@ screens = [
             24,
         ),
     ),
-    Screen(
-        top=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.WindowName(),
-                widget.Clock(format='%a, %d-%m %H:%M'),
-           ],
-           24,
-        ),
-    ),
+#    Screen(
+#        top=bar.Bar(
+#            [
+#                widget.CurrentLayout(),
+#                widget.GroupBox(),
+#                widget.WindowName(),
+#                widget.Clock(format='%a, %d-%m %H:%M'),
+#           ],
+#           24,
+#        ),
+#    ),
 ]
 
 # Drag floating layouts.
