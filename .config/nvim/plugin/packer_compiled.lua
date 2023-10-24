@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/home/bytee/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
     url = "https://github.com/hrsh7th/cmp-nvim-lua"
   },
+  ["cmp-nvim-ultisnips"] = {
+    loaded = true,
+    path = "/home/bytee/.local/share/nvim/site/pack/packer/start/cmp-nvim-ultisnips",
+    url = "https://github.com/quangnguyen30192/cmp-nvim-ultisnips"
+  },
   ["cmp-path"] = {
     loaded = true,
     path = "/home/bytee/.local/share/nvim/site/pack/packer/start/cmp-path",
@@ -215,6 +220,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/bytee/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
+  },
+  ultisnips = {
+    loaded = true,
+    path = "/home/bytee/.local/share/nvim/site/pack/packer/start/ultisnips",
+    url = "https://github.com/SirVer/ultisnips"
   },
   undotree = {
     loaded = true,
