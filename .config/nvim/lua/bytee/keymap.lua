@@ -10,3 +10,6 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/bytee/packer.lua<C
 
 vim.keymap.set("n", "<leader>fz", ":Files<CR>", {});
 vim.keymap.set("n", "<leader>hp", ":Files $HOME<CR>", {});
+
+vim.keymap.set("n", "<leader>ff", ":Rg<CR>", {});
+

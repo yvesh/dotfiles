@@ -73,6 +73,9 @@ return require('packer').startup(function(use)
   -- Use Copilot setup to configure it
   use("github/copilot.vim")
 
+  -- Debugging
+  use('mfussenegger/nvim-dap')
+
   -- Trying them out
   use("theprimeagen/harpoon")
   use("theprimeagen/refactoring.nvim")
