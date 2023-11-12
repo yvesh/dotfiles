@@ -59,6 +59,12 @@ Ctrl + w + w -> Switch to other panes
 
 gi -> Insert on last insert position
 g, -> Jump to line with last editor
+
+daw -> Cut word with space before (dw only deleted the word)
+dap -> Cut whole paragraph
+dib -> Cut next paranthesis
+dit -> Cut tag content
+
 ```
 
 ### File Management

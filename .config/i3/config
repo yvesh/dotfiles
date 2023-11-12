@@ -176,10 +176,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Create screenshot with Maim
-bindsym Print exec maim /mnt/ultrafast/onedrive/screenshots/full-$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym $mod+p exec maim /mnt/ultrafast/onedrive/screenshots/full-$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Save screenshot with Maim and selection tool
-bindsym $mod+Print exec maim -s /mnt/ultrafast/onedrive/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym $mod+Shift+p exec maim -s /mnt/ultrafast/onedrive/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Lock the system
 bindsym $mod+l exec i3lock-fancy-rapid 5 3
