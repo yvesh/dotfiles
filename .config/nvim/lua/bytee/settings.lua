@@ -23,7 +23,7 @@ vim.opt.undofile = true
 
 
 -- Set color scheme
-vim.cmd [[colorscheme dracula]]
+vim.cmd [[colorscheme darcula-solid]]
 vim.opt.termguicolors = true
 
 -- Reset background

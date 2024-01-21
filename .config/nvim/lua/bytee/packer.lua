@@ -20,7 +20,9 @@ return require('packer').startup(function(use)
   use 'junegunn/fzf.vim'
 
   -- Darcula Theme
-  use 'Mofiqul/dracula.nvim'
+  -- use 'Mofiqul/dracula.nvim'
+
+  use { "briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim" }
 
   -- Treesitter
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

@@ -161,8 +161,10 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace 0
 bindsym $mod+Shift+b move scratchpad
-bindsym $mod+b [class="firefox"] scratchpad show
+bindsym $mod+b [class="Vivaldi-stable"] scratchpad show
 bindsym $mod+n [class="notion-snap-reborn"] scratchpad show
+bindsym $mod+shift+n [class="Code"] scratchpad show
+bindsym $mod+shift+m [class="Chromium"] scratchpad show
 
 assign [class="Chrome"] 2 www
 
@@ -176,10 +178,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Create screenshot with Maim
-bindsym $mod+p exec maim /mnt/ultrafast/onedrive/screenshots/full-$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym $mod+p exec maim /mnt/ufast/onedrive/screenshots/full-$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Save screenshot with Maim and selection tool
-bindsym $mod+Shift+p exec maim -s /mnt/ultrafast/onedrive/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym $mod+Shift+p exec maim -s /mnt/ufast/onedrive/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Lock the system
 bindsym $mod+l exec i3lock-fancy-rapid 5 3
