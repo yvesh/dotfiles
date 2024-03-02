@@ -20,7 +20,7 @@ client.focused_inactive  #663300 #663300 #888888 #663300
 hide_edge_borders both
 
 # Gaps
-gaps inner 8
+gaps inner 3
 gaps outer 0
 
 # border_radius 5
@@ -161,7 +161,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace 0
 bindsym $mod+Shift+b move scratchpad
-bindsym $mod+b [class="Vivaldi-stable"] scratchpad show
+# bindsym $mod+b [class="Vivaldi-stable"] scratchpad show
+bindsym $mod+b [class="firefox"] scratchpad show
 bindsym $mod+n [class="notion-snap-reborn"] scratchpad show
 bindsym $mod+shift+n [class="Code"] scratchpad show
 bindsym $mod+shift+m [class="Chromium"] scratchpad show

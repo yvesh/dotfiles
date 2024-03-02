@@ -1,5 +1,4 @@
 -- Simple nvim config - work in progress
--- mostly based on primagen config
--- Version: 2023-10-23
+-- Version: 2024-02-29
 require("bytee")
 
