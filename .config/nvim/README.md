@@ -5,12 +5,13 @@
 
 ## Custom Shortcuts
 
-`<leader>` = Space
-
-`<leader>p` telescope find_files
-`<leader>,` telsecope find in nvim config files
-
-`<leader>x` Ex
+* `<leader>` = Space
+* `<leader>p` telescope find_files
+* `<leader>fz` fzf
+* `<leader>hp` fzf search home directory
+* `<leader>,` telsecope find in nvim config files
+* `<leader>x` Ex
+* `C-t` Open Terminal
 
 
 

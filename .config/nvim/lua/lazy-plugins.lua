@@ -28,6 +28,8 @@ require('lazy').setup {
 
   'eandrju/cellular-automaton.nvim',
 
+  -- { 'akinsho/toggleterm.nvim', version = '*', config = true },
+
   {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
@@ -92,6 +94,9 @@ require('lazy').setup {
   require 'kickstart/plugins/mini',
 
   require 'kickstart/plugins/treesitter',
+
+  require 'kickstart/plugins/harpoon',
+  require 'kickstart/plugins/toggleterm',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
