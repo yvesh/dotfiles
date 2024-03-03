@@ -1,23 +1,22 @@
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
-vim.keymap.set('n', '<leader>x', vim.cmd.Ex)
-vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
-vim.keymap.set('n', '<leader>mr', '<cmd>CellularAutomaton make_it_rain<CR>')
+vim.keymap.set('n', '<leader>x', vim.cmd.Ex, { desc = 'Exit buffer' })
+vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format' })
+vim.keymap.set('n', '<leader>mr', '<cmd>CellularAutomaton make_it_rain<CR>', { desc = 'Make it rain' })
 
-vim.keymap.set('i', '<C-c>', '<Esc>')
-vim.keymap.set('n', '<leader>fz', ':Files<CR>', {})
-vim.keymap.set('n', '<leader>hp', ':Files $HOME<CR>', {})
--- vim.keymap.set('n', '<leader>t', '<Cmd>exe v:count1 . "ToggleTerm"<CR>', { desc = 'Open a new [T]erminal' })
+vim.keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })
+vim.keymap.set('n', '<leader>fz', ':Files<CR>', { desc = 'Fuzy search find file' })
+vim.keymap.set('n', '<leader>hp', ':Files $HOME<CR>', { desc = 'Fuzy search find file in $HOME' })
 
-vim.keymap.set('n', '<leader>ff', ':Rg<CR>', {})
-vim.keymap.set('n', '<leader>xx', '<cmd>!chmod +x %<CR>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
+vim.keymap.set('n', '<leader>ff', ':Rg<CR>', { desc = 'Rip grep files' })
+vim.keymap.set('n', '<leader>xx', '<cmd>!chmod +x %<CR>', { silent = true, desc = 'Make file executable' })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = 'Delete' })
 
 vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
 vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
 
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank to clipboard' })
 
 -- OOB Keymaps
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
