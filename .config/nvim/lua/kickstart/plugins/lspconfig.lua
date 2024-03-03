@@ -6,6 +6,10 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'L3MON4D3/LuaSnip',
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -121,6 +125,7 @@ return {
       --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -135,7 +140,7 @@ return {
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -144,6 +149,33 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
+        volar = {
+          filetypes = { 'vue', 'typescript', 'javascript', 'json' },
+          init_options = {
+            typescript = {
+              tsdk = '/usr/lib/node_modules/typescript',
+            },
+            languageFeatures = {
+              references = true,
+              definition = true,
+              typeDefinition = true,
+              callHierarchy = true,
+              hover = true,
+              rename = true,
+              signatureHelp = true,
+              codeAction = true,
+              completion = {
+                defaultTagNameCase = 'both',
+                defaultAttrNameCase = 'kebabCase',
+              },
+              schemaRequestService = true,
+              documentHighlight = true,
+              codeLens = true,
+              semanticTokens = true,
+              diagnostics = true,
+            },
+          },
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -186,13 +218,24 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
+        'tsserver', -- Used to provide LSP for TypeScript files
       })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+      vim.lsp.set_log_level 'debug'
+
+      require('mason-tool-installer').setup { ensure_installed = ensure_installed, automatic_installtion = { exclude = 'vue-language-server' } }
 
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
+
+            if server_name == 'volar' then
+              -- Volar is a language server for Vue files. It's a bit different than
+              -- other language servers, so we need to handle it differently.
+              server.filetypes = { 'vue', 'typescript', 'javascript', 'json' }
+            end
+
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
