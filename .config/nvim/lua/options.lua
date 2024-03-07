@@ -10,9 +10,11 @@ vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 
--- You can also add relative line numbers, for help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.wildignore = '__pycache__'
+
+vim.opt.hidden = true
+vim.opt.updatetime = 700
+-- vim.opt.smoothscroll = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -34,6 +36,7 @@ vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.incsearch = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
@@ -60,5 +63,13 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Tabs
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+
+vim.opt.joinspaces = false
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -87,7 +87,9 @@ require('lazy').setup {
 
   require 'kickstart/plugins/cmp',
 
-  require 'kickstart/plugins/tokyonight',
+  -- Default scheme
+  -- require 'kickstart/plugins/tokyonight',
+  require 'kickstart/plugins/nightowl',
 
   require 'kickstart/plugins/todo-comments',
 
