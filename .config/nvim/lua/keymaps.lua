@@ -2,7 +2,12 @@
 --  See `:help vim.keymap.set()`
 
 vim.keymap.set('n', '<leader>x', vim.cmd.Ex, { desc = 'Exit buffer' })
-vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format' })
+
+-- Using conform.nvim to format
+vim.keymap.set('n', '<leader>f', function()
+  require('conform').format()
+end, { desc = '[F]ormat' })
+
 vim.keymap.set('n', '<leader>mr', '<cmd>CellularAutomaton make_it_rain<CR>', { desc = 'Make it rain' })
 
 vim.keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })

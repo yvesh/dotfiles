@@ -119,6 +119,31 @@ return {
         end,
       })
 
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+          -- Ignore the formatting capabilities for these specific language servers.
+          for _, name in ipairs { 'lua_ls', 'tsserver', 'volar', 'tailwindcss' } do
+            if client.name == name then
+              return
+            end
+          end
+
+          if client.server_capabilities.documentFormattingProvider then
+            vim.keymap.set('n', '<Leader>f', function()
+              vim.lsp.buf.format { async = true }
+            end, { remap = true, desc = 'Autoformat code (via LSP)' })
+          end
+
+          if client.server_capabilities.documentRangeFormattingProvider then
+            vim.keymap.set('v', '<Leader>a', function()
+              vim.lsp.formatexpr()
+            end, { remap = true, desc = 'Autoformat selected code (via LSP)' })
+          end
+        end,
+      })
+
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP Specification.
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -149,31 +174,58 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
-        volar = {
-          filetypes = { 'vue', 'typescript', 'javascript', 'json' },
+
+        tailwindcss = {
+          languageFeatures = {
+            formatting = false,
+          },
+        },
+
+        -- volar = {
+        --   filetypes = { 'vue', 'typescript', 'javascript', 'json' },
+        --   init_options = {
+        --     typescript = {
+        --       tsdk = '/usr/lib/node_modules/typescript',
+        --     },
+        --     languageFeatures = {
+        --       references = true,
+        --       definition = true,
+        --       typeDefinition = true,
+        --       callHierarchy = true,
+        --       hover = true,
+        --       rename = true,
+        --       signatureHelp = true,
+        --       codeAction = true,
+        --       completion = {
+        --         defaultTagNameCase = 'both',
+        --         defaultAttrNameCase = 'kebabCase',
+        --       },
+        --       schemaRequestService = true,
+        --       documentHighlight = true,
+        --       codeLens = true,
+        --       semanticTokens = true,
+        --       diagnostics = true,
+        --     },
+        --   },
+        -- },
+
+        tsserver = {
+          filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx', 'javascript', 'javascriptreact', 'javascript.tsx', 'json', 'vue' },
           init_options = {
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = '/usr/lib/node_modules/@vue/typescript-plugin',
+                languages = { 'typescript', 'javascript', 'vue' },
+              },
+            },
             typescript = {
               tsdk = '/usr/lib/node_modules/typescript',
             },
-            languageFeatures = {
-              references = true,
-              definition = true,
-              typeDefinition = true,
-              callHierarchy = true,
-              hover = true,
-              rename = true,
-              signatureHelp = true,
-              codeAction = true,
-              completion = {
-                defaultTagNameCase = 'both',
-                defaultAttrNameCase = 'kebabCase',
-              },
-              schemaRequestService = true,
-              documentHighlight = true,
-              codeLens = true,
-              semanticTokens = true,
-              diagnostics = true,
-            },
+          },
+          capabilities = {
+            documentFormattingProvider = false,
+            documentRangeFormattingProvider = false,
           },
         },
 
@@ -221,7 +273,7 @@ return {
         'tsserver', -- Used to provide LSP for TypeScript files
       })
 
-      vim.lsp.set_log_level 'debug'
+      vim.lsp.set_log_level 'error'
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed, automatic_installtion = { exclude = 'vue-language-server' } }
 
