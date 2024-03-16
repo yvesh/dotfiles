@@ -56,6 +56,10 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Just used to it.. wtf
+vim.keymap.set('n', '<C-s>', ':update<CR>', { desc = 'Save' })
+vim.keymap.set('i', '<C-s>', '<Esc>:update<CR>gi', { desc = 'Save' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -67,6 +71,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
+  end,
+})
+
+-- Store buffer on leave
+vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost' }, {
+  -- test
+  callback = function()
+    if vim.bo.modified and not vim.bo.readonly and vim.fn.expand '%' ~= '' and vim.bo.buftype == '' then
+      vim.api.nvim_command 'silent update'
+    end
   end,
 })
 
