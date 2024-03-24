@@ -7,21 +7,20 @@
   "margin": "0 0 0 10", // Waybar margin (top right bottom left)
   "fixed-center": false, // Center modules
   // Choose the order of the modules
-  "modules-left": ["wlr/workspaces", "custom/spotify"],
+  "modules-left": ["hyprland/workspaces", "custom/spotify"],
   "modules-center": ["hyprland/window"],
   "modules-right": [
     "memory",
     "temperature",
-    "pulseaudio",
     "network",
     "clock",
     "custom/weather",
-    "battery",
+//    "battery",
     "tray",
     "custom/power-menu"
   ],
   //  Modules configuration
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "on-click": "activate",
     "on-scroll-up": "hyprctl dispatch workspace e-1",
     "on-scroll-down": "hyprctl dispatch workspace e+1",
