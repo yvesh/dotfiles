@@ -15,8 +15,6 @@ require('lazy').setup {
 
   'junegunn/fzf.vim',
 
-  'briones-gabriel/darcula-solid.nvim',
-
   'folke/trouble.nvim',
 
   'mbbill/undotree',
@@ -29,6 +27,9 @@ require('lazy').setup {
   'eandrju/cellular-automaton.nvim',
 
   -- { 'akinsho/toggleterm.nvim', version = '*', config = true },
+
+  -- Old theme
+  -- 'briones-gabriel/darcula-solid.nvim',
 
   {
     'ThePrimeagen/harpoon',
@@ -89,7 +90,8 @@ require('lazy').setup {
 
   -- Default scheme
   -- require 'kickstart/plugins/tokyonight',
-  require 'kickstart/plugins/nightowl',
+  -- require 'kickstart/plugins/nightowl',
+  require 'kickstart/plugins/sonokai',
 
   require 'kickstart/plugins/todo-comments',
 
