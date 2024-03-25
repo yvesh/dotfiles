@@ -11,6 +11,8 @@ end, { desc = '[F]ormat' })
 vim.keymap.set('n', '<leader>mr', '<cmd>CellularAutomaton make_it_rain<CR>', { desc = 'Make it rain' })
 
 vim.keymap.set('i', '<C-c>', '<Esc>', { desc = 'Exit insert mode' })
+vim.keymap.set('i', 'jj', '<Esc>', { desc = 'Exit insert mode' })
+
 vim.keymap.set('n', '<leader>fz', ':Files<CR>', { desc = 'Fuzy search find file' })
 vim.keymap.set('n', '<leader>hp', ':Files $HOME<CR>', { desc = 'Fuzy search find file in $HOME' })
 
