@@ -12,6 +12,8 @@
 * `<leader>,` telsecope find in nvim config files
 * `<leader>x` Ex
 * `C-t` Open Terminal
-
-
+* `<leader>tt` New Terminal (Split)
+* `C-q` Move treesitter & Co to Quickfix list
+* `C-j` Switch to next buffer
+* `C-k` Switch to previous buffer
 
