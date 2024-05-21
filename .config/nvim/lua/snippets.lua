@@ -14,7 +14,7 @@ ls.add_snippets('all', {
 -- Vue.js
 ls.add_snippets('vue', {
   s('myts', {
-    t '<script lang="ts">',
+    t '<script setup lang="ts">',
     t { '', '' },
     t { '', '</script>' },
     t { '', '' },
