@@ -9,7 +9,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:monospace 0 
 
-# we use comptone highlighting instead
+# we use compton / picom highlighting instead
 new_window pixel 2 
 
 # class                 border  backgr. text    indicator
