@@ -4,7 +4,7 @@
 export PATH="$HOME/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin:$HOME/.config/composer/vendor/bin:$HOME/.bin:$HOME/.gem/ruby/2.4.0/bin:$HOME/.local/bin:/var/lib/snapd/snap/bin:$HOME/.emacs.d/bin:$PATH"
 
 # Editor and visual Settings
-export EDITOR=vim
+export EDITOR=nvim
 
 # Compiling
 export NUMCPUS=$(nproc)

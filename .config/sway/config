@@ -3,7 +3,7 @@
 #
 # * Uses Wofi as menu launcher
 # * swaylock-fancy for screen locking
-# * alacritty as default term
+# * kitty as default term
 # * grim (with slurp) for screenshots
 #  
 # Maintainer:
@@ -21,7 +21,7 @@ output DP-2 pos 0 0 res 7680x2160@120.000Hz
 
 # focus output DP-1
 
-output "*" background /mnt/ufast/onedrive/home/wallpaper/2023/green-planet-7980.jpg fill
+# output "*" background /mnt/ufast/onedrive/home/wallpaper/2023/green-planet-7980.jpg fill
 
 set $mod Mod4
 
@@ -100,7 +100,7 @@ set $cws3 "s3: "
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty # rxvt-unicode / urxvt
+bindsym $mod+Return exec kitty # alacritty # rxvt-unicode / urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -212,7 +212,7 @@ bindsym Print exec grim /mnt/ufast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%
 bindsym $mod+Print exec grim -g "$(slurp)" /mnt/ufast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Lock the system
-bindsym $mod+l exec swaylock
+bindsym $mod+l exec swaylock -f -c 000000
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -256,6 +256,12 @@ exec --no-startup-id copyq
 # Notifications
 exec --no-startup-id mako
 
+# Wallpaper daemon
+# exec --no-startup-id swww-daemon
+
+# Using time wall for a dynamic bg
+exec timewall set --daemon
+
 # uxrvt in daemon mode
 # exec --no-startup-id uxrvtd -q -f -o
 
@@ -280,5 +286,5 @@ exec --no-startup-id wmname LG3D
 
 exec --no-startup-id  swayidle timeout 600 'swaymsg "output * dpms off"' \
        resume 'swaymsg "output * dpms on"' \
-       before-sleep 'swaylock -c 000000'
+       before-sleep 'swaylock -f -c 000000'
 
