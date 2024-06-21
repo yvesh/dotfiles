@@ -206,10 +206,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Create screenshot with Grim
-bindsym Print exec grim /mnt/ufast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym $mod+p exec grim /mnt/ufast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Save screenshot with Sway and selection tool
-bindsym $mod+Print exec grim -g "$(slurp)" /mnt/ufast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym $mod+Shift+p exec grim -g "$(slurp)" /mnt/ufast/onedrive/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Lock the system
 bindsym $mod+l exec swaylock -f -c 000000
