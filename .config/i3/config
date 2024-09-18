@@ -1,7 +1,5 @@
-# i3-gaps config - v2023-10-22
-# 
-# Maintainer:
-#   Yves Hoppe <info@yveshoppe.de>
+# i3-gaps config - v2024-09-10
+# Yves Hoppe <info@yveshoppe.de>
 
 set $mod Mod4
 
@@ -20,7 +18,7 @@ client.focused_inactive  #663300 #663300 #888888 #663300
 hide_edge_borders both
 
 # Gaps
-gaps inner 3
+gaps inner 2
 gaps outer 0
 
 # border_radius 5
@@ -78,7 +76,7 @@ rename workspace 9 to $ws9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty # urxvt # alacritty # rxvt-unicode
+bindsym $mod+Return exec kitty # alacritty # urxvt # alacritty # rxvt-unicode
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -179,10 +177,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Create screenshot with Maim
-bindsym $mod+p exec maim /mnt/ufast/onedrive/screenshots/full-$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym $mod+p exec maim ~/screenshots/full-$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Save screenshot with Maim and selection tool
-bindsym $mod+Shift+p exec maim -s /mnt/ufast/onedrive/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym $mod+Shift+p exec maim -s ~/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Lock the system
 bindsym $mod+l exec i3lock-fancy-rapid 5 3
@@ -240,7 +238,7 @@ exec --no-startup-id setxkbmap de
 # exec --no-startup-id /usr/bin/unity-settings-daemon
 # exec --no-startup-id /usr/libexec/gnome-settings-daemon
 # exec --no-startup-id gnome-shell
-
+:w
 # clipit
 exec --no-startup-id copyq
 

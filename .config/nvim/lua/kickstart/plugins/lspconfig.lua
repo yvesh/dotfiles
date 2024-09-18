@@ -211,7 +211,7 @@ return {
         --   },
         -- },
 
-        tsserver = {
+        ts_ls = {
           filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx', 'javascript', 'javascriptreact', 'javascript.tsx', 'json', 'vue' },
           init_options = {
             plugins = {
@@ -272,7 +272,8 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
-        'tsserver', -- Used to provide LSP for TypeScript files
+        'ts_ls', -- Used to format lua code
+        -- 'tsserver', -- Used to provide LSP for TypeScript files
       })
 
       vim.lsp.set_log_level 'error'
@@ -282,6 +283,11 @@ return {
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
+            -- https://github.com/neovim/nvim-lspconfig/pull/3232
+            if server_name == 'tsserver' then
+              server_name = 'ts_ls'
+            end
+
             local server = servers[server_name] or {}
 
             if server_name == 'volar' then
