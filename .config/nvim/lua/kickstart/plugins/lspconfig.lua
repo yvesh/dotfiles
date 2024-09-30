@@ -217,12 +217,13 @@ return {
             plugins = {
               {
                 name = '@vue/typescript-plugin',
-                location = '/usr/lib/node_modules/@vue/typescript-plugin',
+                location = '/var/usrlocal/lib/node_modules/@vue/typescript-plugin',
+                -- location = '/usr/lib/node_modules/@vue/typescript-plugin',
                 languages = { 'vue' },
               },
             },
             typescript = {
-              tsdk = '/usr/lib/node_modules/typescript',
+              tsdk = '/var/usrlocal/lib/node_modules/typescript',
             },
           },
           capabilities = {

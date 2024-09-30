@@ -1,4 +1,4 @@
-# Sway - v2024-05-31
+# Sway - v2024-09-28
 # Ported from i3-gaps
 #
 # * Uses Wofi as menu launcher
@@ -10,6 +10,7 @@
 #   Yves Hoppe <info@yveshoppe.de>
 
 # Sway specific stuff
+
 # KeyBoard layout
 input * xkb_layout de
 # input "MANUFACTURER1 Keyboard" xkb_model "pc105"
@@ -21,7 +22,7 @@ input * xkb_layout de
 
 # focus output DP-1
 
-# output "*" background /mnt/ufast/onedrive/home/wallpaper/2023/green-planet-7980.jpg fill
+output "*" background ~/Downloads/wallpaper/dock.png fill
 
 set $mod Mod4
 
@@ -213,6 +214,7 @@ bindsym $mod+Shift+p exec grim -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%
 
 # Lock the system
 bindsym $mod+l exec swaylock -f -c 000000
+bindsym $mod+shift+l exec swaylock -f && sleep 2 && systemctl suspend
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -247,8 +249,7 @@ bar {
    #  position top
 }
 
-# Positioning monitors
-# exec --no-startup-id bash ~/rotate_24.sh
+include @sysconfdir@/sway/config.d/*
 
 # Gnome settings daemon (or unit if Ubuntu)
 exec --no-startup-id copyq
@@ -260,7 +261,7 @@ exec --no-startup-id mako
 # exec --no-startup-id swww-daemon
 
 # Using time wall for a dynamic bg
-exec timewall set --daemon
+# exec timewall set --daemon
 
 # uxrvt in daemon mode
 # exec --no-startup-id uxrvtd -q -f -o
@@ -284,7 +285,8 @@ exec --no-startup-id nm-applet --no-agent
 
 exec --no-startup-id wmname LG3D
 
-exec --no-startup-id  swayidle timeout 600 'swaymsg "output * dpms off"' \
+exec --no-startup-id swayidle timeout 600 'swaymsg "output * dpms off"' \
        resume 'swaymsg "output * dpms on"' \
        before-sleep 'swaylock -f -c 000000'
+
 

@@ -13,7 +13,6 @@ fish_ssh_agent
 ## Fzf
 fzf_configure_bindings
 
-
 ## Path
 fish_add_path $HOME/bin
 fish_add_path $HOME/.local/bin
