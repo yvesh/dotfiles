@@ -21,6 +21,9 @@ input * xkb_layout de
 # output DP-2 pos 0 0 res 7680x2160@120.000Hz
 
 # focus output DP-1
+# Asus DUO 14 (Dual OLED)
+output eDP-1 pos 0 0 res 2880x1800@120.000Hz scale 1.5
+output eDP-2 disable
 
 output "*" background ~/Downloads/wallpaper/dock.png fill
 

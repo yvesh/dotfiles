@@ -126,3 +126,5 @@ case ":$PATH:" in
 esac
 # pnpm end
 ### End of Zinit's installer chunk
+
+eval "$(atuin init zsh)"
