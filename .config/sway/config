@@ -17,13 +17,16 @@ input * xkb_layout de
 
 # output HDMI-A-1 pos 0 0 res 5120x1440@69.973000Hz
 # output DP-2 transform 90 pos 5120 0 mode 2560x1440@143.912003Hz 
-# output DP-1 pos 0 0 res 3840x2160@144.000Hz
+
+# Ryzen 7950X desktop
+output DP-1 pos 0 0 res 3440x1440@165.001Hz
+output DP-2 pos 3440 0 res 2560x1440@164.958Hz
 # output DP-2 pos 0 0 res 7680x2160@120.000Hz
 
 # focus output DP-1
 # Asus DUO 14 (Dual OLED)
-output eDP-1 pos 0 0 res 2880x1800@120.000Hz scale 1.5
-output eDP-2 disable
+# output eDP-1 pos 0 0 res 2880x1800@120.000Hz scale 1.5
+# output eDP-2 disable
 
 output "*" background ~/Downloads/wallpaper/dock.png fill
 
@@ -252,6 +255,7 @@ bar {
    #  position top
 }
 
+include /etc/sway/config.d/*
 include @sysconfdir@/sway/config.d/*
 
 # Gnome settings daemon (or unit if Ubuntu)
