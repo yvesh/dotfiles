@@ -29,7 +29,7 @@ gaps outer 0
 
 # Use smart gaps and borders
 smart_gaps on
-smart_borders on
+# smart_borders on
 
 # Workspace names
 # Dashboard

@@ -28,7 +28,7 @@ output DP-2 pos 3440 0 res 2560x1440@164.958Hz
 # output eDP-1 pos 0 0 res 2880x1800@120.000Hz scale 1.5
 # output eDP-2 disable
 
-output "*" background ~/Downloads/wallpaper/dock.png fill
+output "*" background ~/Downloads/wallpaper/space2.jpg fill
 
 set $mod Mod4
 
