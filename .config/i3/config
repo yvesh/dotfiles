@@ -184,6 +184,7 @@ bindsym $mod+Shift+p exec maim -s ~/screenshots/area-$(date +%Y-%m-%d_%H-%m-%s).
 
 # Lock the system
 bindsym $mod+l exec i3lock-fancy-rapid 5 3
+bindsym $mod+Shift+l exec i3lock-fancy-rapid 5 3 && sleep 3 && systemctl suspend
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
