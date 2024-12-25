@@ -277,5 +277,8 @@ exec --no-startup-id xss-lock i3lock-fancy-rapid 3 5
 
 #  exec --no-startup-id ~/.screenlayout/default.sh
 
+# KDE Connect
+exec --no-startup-id kdeconnect-indicator
+
 # Set background
 exec --no-startup-id ~/.fehbg
