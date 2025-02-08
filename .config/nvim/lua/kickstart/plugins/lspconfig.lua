@@ -126,7 +126,7 @@ return {
           local client = vim.lsp.get_client_by_id(args.data.client_id)
 
           -- Ignore the formatting capabilities for these specific language servers.
-          for _, name in ipairs { 'lua_ls', 'tsserver', 'volar', 'tailwindcss' } do
+          for _, name in ipairs { 'lua_ls', 'tsserver', 'volar', 'tailwindcss', 'ts_ls' } do
             if client.name == name then
               return
             end
