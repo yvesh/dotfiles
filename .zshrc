@@ -130,3 +130,4 @@ esac
 ### End of Zinit's installer chunk
 
 eval "$(atuin init zsh)"
+### End of Zinit's installer chunk
