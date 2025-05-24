@@ -217,15 +217,16 @@ return {
             plugins = {
               {
                 name = '@vue/typescript-plugin',
-                location = '/Users/bytee/.npm-global/lib/node_modules/@vue/typescript-plugin',
-                -- location = '/home/bytee/.npm-global/lib/node_modules/@vue/typescript-plugin',
+                -- location = '/Users/bytee/.npm-global/lib/node_modules/@vue/typescript-plugin',
+                location = '/home/bytee/.npm-global/lib/node_modules/@vue/typescript-plugin',
                 -- location = '/usr/lib/node_modules/@vue/typescript-plugin',
                 languages = { 'vue', 'typescript', 'javascript' },
               },
             },
             typescript = {
               -- tsdk = '~/.npm-global/lib/node_modules/typescript',
-              tsdk = '/Users/bytee/.npm-global/lib/node_modules/typescript',
+              -- tsdk = '/Users/bytee/.npm-global/lib/node_modules/typescript',
+              tsdk = '/home/bytee/.npm-global/lib/node_modules/typescript',
             },
           },
           capabilities = {

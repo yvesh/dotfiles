@@ -1,11 +1,11 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR EDITOR:nvim
-SETUVAR --export EMERGE_DEFAULT_OPTS:\x2d\x2djobs\x3d1\x20\x2d\x2dload\x2daverage\x3d
+SETUVAR --export EMERGE_DEFAULT_OPTS:\x2d\x2djobs\x3d65\x20\x2d\x2dload\x2daverage\x3d64
 SETUVAR --export GDK_SCALE:1
-SETUVAR --export MAKEOPTS:\x2dj1\x20\x2dl
+SETUVAR --export MAKEOPTS:\x2dj65\x20\x2dl64
 SETUVAR --export NUMCPUS:64
-SETUVAR --export NUMCPUSPLUSONE:1
+SETUVAR --export NUMCPUSPLUSONE:65
 SETUVAR --export QEMU_AUDIO_DRV:alsa
 SETUVAR --export QT_AUTO_SCREEN_SCALE_FACTOR:1
 SETUVAR --export XDEBUG_CONFIG:remote_enable\x3d1\x20remote_host\x3d127\x2e0\x2e0\x2e1\x20remote_port\x3d9000\x20remote_mode\x3dreq
