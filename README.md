@@ -36,8 +36,8 @@ Personal Linux / Unix dot files 2024. Recently cleaned them up and using a bareb
 
 ### Windowmanagers / Display Manager
 
+* hyprland -- Mostly my main WM for 2025, miss straigtforward tiling sometimes
 * sway(fx) - Switched back 2024, my main WM 2024 - manual tiling for me
-* hyprland -- Playground WM, still missing scratchpads like sway
 * xmonad -- 2nd most used WM, when the hype is over and i move back to X11
 * qtile -- Still in love
 * bspwm -- Before xmonad
