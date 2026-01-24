@@ -24,3 +24,8 @@ fish_add_path $HOME/.config/yarn/global/node_modules/.bin
 fish_add_path /var/lib/snapd/snap/bin
 # fish_add_path /home/linuxbrew/.linuxbrew/bin/nmap
 fish_add_path /var/lib/flatpak/exports/bin
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /home/bytee/.lmstudio/bin
+# End of LM Studio CLI section
+

@@ -1,4 +1,4 @@
-# Sway - v2024-09-28
+# Sway - v2026-01-22
 # Ported from i3-gaps
 #
 # * Uses Wofi as menu launcher
@@ -15,12 +15,19 @@
 input * xkb_layout de
 # input "MANUFACTURER1 Keyboard" xkb_model "pc105"
 
+# Larger cursor
+set $cursor_size 24
+seat seat0 xcursor_theme Adwaita $cursor_size
+
 # output HDMI-A-1 pos 0 0 res 5120x1440@69.973000Hz
 # output DP-2 transform 90 pos 5120 0 mode 2560x1440@143.912003Hz 
 
-# Ryzen 7950X desktop
-output DP-1 pos 0 0 res 3440x1440@165.001Hz
-output DP-2 pos 3440 0 res 2560x1440@164.958Hz
+output eDP-1 disable
+output DP-2 pos 0 0 res 3840x2160@120.000Hz scale 1.5
+output DP-4 pos 2560 0 res 3840x2160@120.000Hz scale 1.5
+
+# output DP-1 pos 0 0 res 3440x1440@165.001Hz
+# output DP-2 pos 3440 0 res 2560x1440@164.958Hz
 # output DP-2 pos 0 0 res 7680x2160@120.000Hz
 
 # focus output DP-1
@@ -28,7 +35,7 @@ output DP-2 pos 3440 0 res 2560x1440@164.958Hz
 # output eDP-1 pos 0 0 res 2880x1800@120.000Hz scale 1.5
 # output eDP-2 disable
 
-output "*" background ~/Downloads/wallpaper/space2.jpg fill
+output "*" background ~/Downloads/wallpaper/island.jpg fill
 
 set $mod Mod4
 
@@ -56,31 +63,31 @@ gaps outer 0
 smart_gaps on
 smart_borders on
 
-# Workspace names (With fontawesome)
+# Workspace names (ASCII-safe)
 # Dashboard
-set $ws0 "0:0 "
-set $ws1 "1:  "
+set $ws0 "0:home (0) >"
+set $ws1 "1:term (1) >"
 # Web
-set $ws2 "2:  "
+set $ws2 "2:web (2) >"
 # Dev
-set $ws3 "3:  "
-# SQL
-set $ws4 "4: "
-# Mail
-set $ws5 "5: "
-# vmware
-set $ws6 "6:  "
+set $ws3 "3:dev (3) >"
+# Dev
+set $ws4 "4:ops (4) >"
+# Dev
+set $ws5 "5:devweb (5) >"
+# Dev
+set $ws6 "6:git (6) >"
 # spotify
-set $ws7 "7:  "
+set $ws7 "7:music (7) >"
 # vlc
-set $ws8 "8:  "
+set $ws8 "8:video (8) >"
 # Trash
-set $ws9 "9:  "
+set $ws9 "9:trash (9) >"
 
 # Some extra space
-set $cws1 "s1: "
-set $cws2 "s2: "
-set $cws3 "s3: "
+set $cws1 "s1:aux (s1) >"
+set $cws2 "s2:aux (s2) >"
+set $cws3 "s3:aux (s3) >"
 
 # rename workspace 1 to $ws1
 # rename workspace 2 to $ws2
@@ -216,7 +223,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+p exec grim ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Save screenshot with Sway and selection tool
-bindsym $mod+Shift+p exec grim -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+# bindsym $mod+Shift+p exec grim -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png | wl-copy -t image/png
+bindsym $mod+Shift+p exec bash -lc 'f="$HOME/screenshots/$(date +%F_%H-%M-%S).png"; grim -g "$(slurp)" - | tee "$f" | wl-copy -t image/png'
 
 # Lock the system
 bindsym $mod+l exec swaylock -f -c 000000
@@ -295,5 +303,3 @@ exec --no-startup-id wmname LG3D
 exec --no-startup-id swayidle timeout 600 'swaymsg "output * dpms off"' \
        resume 'swaymsg "output * dpms on"' \
        before-sleep 'swaylock -f -c 000000'
-
-
