@@ -300,6 +300,8 @@ exec --no-startup-id nm-applet --no-agent
 
 exec --no-startup-id wmname LG3D
 
-exec --no-startup-id swayidle timeout 600 'swaymsg "output * dpms off"' \
-       resume 'swaymsg "output * dpms on"' \
-       before-sleep 'swaylock -f -c 000000'
+exec --no-startup-id swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -c 000000'
