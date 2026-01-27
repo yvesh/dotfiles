@@ -238,39 +238,42 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    # Bumblee status dev
-    status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic traffic cpu sensors memory pasink pasource date time battery -p time.format="%H:%M" date.format="%a, %b %d %Y" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0,vboxnet,veth,wlp,wwp,br,macvtap0,vibr0,vibr,vnet0,virbr0,virbr1 nic.exclude=lo,docker,vmnet,lxcbr,wwp0s,vboxnet,veth,br,vnet,br-72a8a860a1ae,vibr0-nic,vibr,vnet0,virbr0,virbr1 -t gruvbox-powerline
-
-    # tray_output primary
-    font pango:DejaVu Sans Mono for Powerline 12 
-    strip_workspace_numbers yes
-
-    # Overwritten by theme, fallback
-	colors {
-        background #000000
-        statusline #9b9081
-        separator #cccccc
- 
-        # Colors           border  backgr. text
-        focused_workspace  #141414 #CCCCCC #333333
-        active_workspace   #141414 #181b20 #746C48
-        inactive_workspace #141414 #181b20 #444444
-        urgent_workspace   #141414 #181b20 #8c644c
-    }
-
-   # Using polybar at the top
-   #  position top
-}
+# bar {
+#     # Bumblee status dev
+#     status_command ~/projects/yvesh/bumblebee-status/bumblebee-status -m spotify nic traffic cpu sensors memory pasink pasource date time battery -p time.format="%H:%M" date.format="%a, %b %d %Y" traffic.exclude=lo,vmnet1,vmnet8,lxcbr0,docker0,vboxnet,veth,wlp,wwp,br,macvtap0,vibr0,vibr,vnet0,virbr0,virbr1 nic.exclude=lo,docker,vmnet,lxcbr,wwp0s,vboxnet,veth,br,vnet,br-72a8a860a1ae,vibr0-nic,vibr,vnet0,virbr0,virbr1 -t gruvbox-powerline
+# 
+#     # tray_output primary
+#     font pango:DejaVu Sans Mono for Powerline 12 
+#     strip_workspace_numbers yes
+# 
+#     # Overwritten by theme, fallback
+# 	colors {
+#         background #000000
+#         statusline #9b9081
+#         separator #cccccc
+#  
+#         # Colors           border  backgr. text
+#         focused_workspace  #141414 #CCCCCC #333333
+#         active_workspace   #141414 #181b20 #746C48
+#         inactive_workspace #141414 #181b20 #444444
+#         urgent_workspace   #141414 #181b20 #8c644c
+#     }
+# 
+#    # Using polybar at the top
+#    #  position top
+# }
 
 include /etc/sway/config.d/*
 include @sysconfdir@/sway/config.d/*
 
+exec dms run
+exec wl-paste --watch cliphist store
+
 # Gnome settings daemon (or unit if Ubuntu)
-exec --no-startup-id copyq
+# exec --no-startup-id copyq
 
 # Notifications
-exec --no-startup-id mako
+# exec --no-startup-id mako
 
 # Wallpaper daemon
 # exec --no-startup-id swww-daemon
