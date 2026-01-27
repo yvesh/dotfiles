@@ -23,7 +23,7 @@ seat seat0 xcursor_theme Adwaita $cursor_size
 # output DP-2 transform 90 pos 5120 0 mode 2560x1440@143.912003Hz 
 
 output eDP-1 disable
-output DP-2 pos 0 0 res 3840x2160@120.000Hz scale 1.5
+output DP-3 pos 0 0 res 3840x2160@120.000Hz scale 1.5
 output DP-4 pos 2560 0 res 3840x2160@120.000Hz scale 1.5
 
 # output DP-1 pos 0 0 res 3440x1440@165.001Hz
