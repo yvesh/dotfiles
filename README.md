@@ -22,7 +22,7 @@ Personal Linux / Unix dot files 2026. Recently cleaned them up and using a bareb
 * NixOS -- Main distro 2026, see [nixos-config](https://github.com/yvesh/nixos-config)
 * Gentoo -- Secondary Main distro for ages, see [gentoo-config](https://github.com/yvesh/gentoo-config)
 * Bluefin -- Secondary distro for 2025 with sway and some secure blue tweaks (Not using VSCode, but neovim, but still like the spirit)
-* Arch Linux -- Some older notebooks, podman / kubernetes / docker hosts
+* Cachy OS / Arch Linux -- Some older notebooks, podman / kubernetes / docker hosts
 * Proxmox -- Home servers
 * FreeBSD -- Home servers
 
@@ -71,11 +71,13 @@ Personal Linux / Unix dot files 2026. Recently cleaned them up and using a bareb
 
 ### Notifications
 
+* DankMaterialShell -- All in one Shell
 * mako -- Default bar for Hyprland and sway
 * dunst -- Still my favorite, test it with notify-send
 
 ### Lockscreen
 
+* DankMaterialShell -- All in one Shell
 * swaylock / swaylock-effects -- wayland
 * i3lock-fancy-rapid -- Very fast rewrite of i3lock-fancy in C++
 
@@ -87,10 +89,17 @@ Personal Linux / Unix dot files 2026. Recently cleaned them up and using a bareb
 
 ### Other tools
 
+* DankMaterialShell -- All in one Shell
 * maim -- Screenshots
 * grim + slurp -- Wayland Screenshots
 * wayland-ocr -- Helper script for OCR from content
 * rofi / wofi -- My default launcher
+* Atuin - Shell history manager
+* Starship - Shell prompt
+* sheldon - zsh plugin manager
+* fzf - Fuzzy finder
+* bat - Better cat
+* eza - Better ls
 
 ### People
 

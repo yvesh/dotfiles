@@ -1,0 +1,109 @@
+{
+  "id": "rosePine",
+  "name": "Rosé Pine",
+  "version": "1.0.0",
+  "author": "ExistencialistaP",
+  "description": "All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+  "dark": {
+    "primary": "#c4a7e7",
+    "primaryContainer": "#26233a",
+    "secondary": "#f6c177",
+    "surfaceText": "#e0def4",
+    "surfaceVariantText": "#e0def4",
+    "backgroundText": "#e0def4",
+    "outline": "#908caa",
+    "error": "#eb6f92",
+    "warning": "#f6c177",
+    "info": "#9ccfd8"
+  },
+  "light": {
+    "primary": "#907aa9",
+    "primaryContainer": "#dfdad9",
+    "secondary": "#ea9d34",
+    "surfaceText": "#575279",
+    "surfaceVariantText": "#575279",
+    "backgroundText": "#575279",
+    "outline": "#797593",
+    "error": "#b4637a",
+    "warning": "#ea9d34",
+    "info": "#56949f"
+  },
+  "variants": {
+    "default": "rosePine",
+    "options": [
+      {
+        "id": "rosePine",
+        "name": "Rosé Pine",
+        "dark": {
+          "primaryText": "#191724",
+          "surface": "#1f1d2e",
+          "surfaceVariant": "#26233a",
+          "surfaceTint": "#c4a7e7",
+          "background": "#191724",
+          "surfaceContainer": "#1f1d2e",
+          "surfaceContainerHigh": "#26233a",
+          "surfaceContainerHighest": "#524f67"
+        },
+        "light": {
+          "primaryText": "#faf4ed",
+          "surface": "#fffaf3",
+          "surfaceVariant": "#f2e9de",
+          "surfaceTint": "#907aa9",
+          "background": "#faf4ed",
+          "surfaceContainer": "#fffaf3",
+          "surfaceContainerHigh": "#f2e9de",
+          "surfaceContainerHighest": "#cecacd"
+        }
+      },
+      {
+        "id": "moon",
+        "name": "Moon",
+        "dark": {
+          "primaryText": "#232136",
+          "surface": "#2a273f",
+          "surfaceVariant": "#393552",
+          "surfaceTint": "#c4a7e7",
+          "background": "#232136",
+          "surfaceContainer": "#2a273f",
+          "surfaceContainerHigh": "#393552",
+          "surfaceContainerHighest": "#56526e"
+        },
+        "light": {
+          "primaryText": "#faf4ed",
+          "surface": "#f2e9de",
+          "surfaceVariant": "#fffaf3",
+          "surfaceTint": "#907aa9",
+          "background": "#faf4ed",
+          "surfaceContainer": "#fffaf3",
+          "surfaceContainerHigh": "#f2e9de",
+          "surfaceContainerHighest": "#cecacd"
+        }
+      },
+      {
+        "id": "dawn",
+        "name": "Dawn",
+        "dark": {
+          "primaryText": "#191724",
+          "surface": "#26233a",
+          "surfaceVariant": "#1f1d2e",
+          "surfaceTint": "#907aa9",
+          "background": "#191724",
+          "surfaceContainer": "#26233a",
+          "surfaceContainerHigh": "#1f1d2e",
+          "surfaceContainerHighest": "#524f67"
+        },
+        "light": {
+          "primaryText": "#faf4ed",
+          "surface": "#fffaf3",
+          "surfaceVariant": "#f2e9de",
+          "surfaceTint": "#907aa9",
+          "background": "#faf4ed",
+          "surfaceContainer": "#fffaf3",
+          "surfaceContainerHigh": "#f2e9de",
+          "surfaceContainerHighest": "#dfdad9"
+        }
+      }
+    ]
+  },
+  "sourceDir": "rose-pine"
+}
