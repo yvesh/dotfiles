@@ -60,6 +60,8 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt AUTO_CD
 setopt AUTO_PUSHD
 
+bindkey -e
+
 ### End of Zinit's installer chunk
 
 # Added by LM Studio CLI (lms)

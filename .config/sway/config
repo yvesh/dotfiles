@@ -23,8 +23,8 @@ seat seat0 xcursor_theme Adwaita $cursor_size
 # output DP-2 transform 90 pos 5120 0 mode 2560x1440@143.912003Hz 
 
 output eDP-1 disable
-output DP-3 pos 0 0 res 3840x2160@120.000Hz scale 1.5
-output DP-4 pos 2560 0 res 3840x2160@120.000Hz scale 1.5
+output DP-2 pos 0 0 res 3840x2160@120.000Hz scale 1.5
+output DP-5 pos 2560 0 res 3840x2160@120.000Hz scale 1.5
 
 # output DP-1 pos 0 0 res 3440x1440@165.001Hz
 # output DP-2 pos 3440 0 res 2560x1440@164.958Hz
@@ -263,8 +263,13 @@ bindsym $mod+r mode "resize"
 #    #  position top
 # }
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 include /etc/sway/config.d/*
 include @sysconfdir@/sway/config.d/*
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 exec dms run
 exec wl-paste --watch cliphist store
