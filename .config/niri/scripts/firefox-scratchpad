@@ -1,0 +1,31 @@
+#!/bin/sh
+# Firefox scratchpad toggle:
+#   - not running: launch
+#   - focused:     hide to "scratch" workspace
+#   - elsewhere:   pull onto current workspace and focus
+set -eu
+
+APP_ID="firefox"
+SCRATCH_WS="scratch"
+
+windows=$(niri msg --json windows)
+win_id=$(printf '%s' "$windows" | jq -r --arg a "$APP_ID" 'map(select(.app_id == $a)) | .[0].id // empty')
+
+if [ -z "$win_id" ]; then
+    exec firefox
+fi
+
+is_focused=$(printf '%s' "$windows" | jq -r --argjson i "$win_id" '.[] | select(.id == $i) | .is_focused')
+win_ws_id=$(printf '%s' "$windows" | jq -r --argjson i "$win_id" '.[] | select(.id == $i) | .workspace_id')
+focused_ws=$(niri msg --json workspaces | jq -r '.[] | select(.is_focused)')
+focused_ws_id=$(printf '%s' "$focused_ws" | jq -r '.id')
+focused_ws_idx=$(printf '%s' "$focused_ws" | jq -r '.idx')
+
+if [ "$is_focused" = "true" ]; then
+    niri msg action move-window-to-workspace --window-id "$win_id" --focus false "$SCRATCH_WS"
+else
+    if [ "$win_ws_id" != "$focused_ws_id" ]; then
+        niri msg action move-window-to-workspace --window-id "$win_id" "$focused_ws_idx"
+    fi
+    niri msg action focus-window --id "$win_id"
+fi
