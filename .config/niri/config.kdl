@@ -165,16 +165,17 @@ environment {
 spawn-at-startup "nm-applet" "--no-agent"
 spawn-sh-at-startup "swayidle -w timeout 300 'loginctl lock-session' timeout 600 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors' before-sleep 'loginctl lock-session'"
 
-workspace "1"
-workspace "2"
-workspace "3"
-workspace "4"
-workspace "5"
-workspace "6"
-workspace "7"
-workspace "8"
-workspace "9"
-workspace "scratch"
+workspace "0:home"    { open-on-output "DP-2"; }
+workspace "1:term"    { open-on-output "DP-2"; }
+workspace "3:dev"     { open-on-output "DP-2"; }
+workspace "4:ops"     { open-on-output "DP-2"; }
+workspace "5:devweb"  { open-on-output "DP-2"; }
+workspace "6:git"     { open-on-output "DP-2"; }
+workspace "2:web"     { open-on-output "DP-5"; }
+workspace "7:music"   { open-on-output "DP-5"; }
+workspace "8:video"   { open-on-output "DP-5"; }
+workspace "9:trash"   { open-on-output "DP-4"; }
+workspace "scratch"   { open-on-output "DP-2"; }
 hotkey-overlay {
     skip-at-startup
 }
