@@ -5,8 +5,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // === Application Launchers ===
-    Mod+T hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
-    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
+    Mod+T hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
+    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
     Mod+B hotkey-overlay-title="Firefox Scratchpad" { spawn "/home/bytee_profile/.config/niri/scripts/firefox-scratchpad"; }
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
@@ -186,8 +186,8 @@ binds {
     Mod+Shift+9 { move-column-to-workspace "9:trash"; }
 
     // === Column Management ===
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+odiaeresis { consume-or-expel-window-left; }   // Ö
+    Mod+adiaeresis { consume-or-expel-window-right; }  // Ä
     Mod+Period { expel-window-from-column; }
 
     // === Sizing & Layout ===
