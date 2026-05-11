@@ -160,6 +160,7 @@ overview {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 environment {
   XDG_CURRENT_DESKTOP "niri"
+  ELECTRON_OZONE_PLATFORM_HINT "wayland"
 }
 
 spawn-at-startup "nm-applet" "--no-agent"
@@ -171,10 +172,10 @@ workspace "3:dev"     { open-on-output "DP-2"; }
 workspace "4:ops"     { open-on-output "DP-2"; }
 workspace "5:devweb"  { open-on-output "DP-2"; }
 workspace "6:git"     { open-on-output "DP-2"; }
-workspace "2:web"     { open-on-output "DP-5"; }
-workspace "7:music"   { open-on-output "DP-5"; }
-workspace "8:video"   { open-on-output "DP-5"; }
-workspace "9:trash"   { open-on-output "DP-4"; }
+workspace "2:web"     { open-on-output "DP-4"; }
+workspace "7:music"   { open-on-output "DP-4"; }
+workspace "8:video"   { open-on-output "DP-4"; }
+workspace "9:trash"   { open-on-output "DP-5"; }
 workspace "scratch"   { open-on-output "DP-2"; }
 hotkey-overlay {
     skip-at-startup

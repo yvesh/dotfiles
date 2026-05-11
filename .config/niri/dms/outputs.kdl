@@ -10,13 +10,13 @@ output "DP-2" {
     position x=0 y=0
 }
 
-output "DP-5" {
+output "DP-4" {
     mode "3840x2160@120.000"
     scale 1.5
     position x=2560 y=0
 }
 
-output "DP-4" {
+output "DP-5" {
     mode "2560x720@59.999"
     scale 1.25
     position x=1536 y=1440
